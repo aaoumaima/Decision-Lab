@@ -1,0 +1,17 @@
+model,temperature,condition,iteration,optimal_qty,model_qty,pull_to_center_bias,raw_response
+gemini-2.5-flash,0.1,high_margin,1,75,6,False,Erreur Gemini: 404 This model models/gemini-2.5-flash is no longer available to new users. Please update your code to use models/gemini-3.6-flash for the latest features and improvements. We recommend you to use the Interactions API.
+gemini-2.5-flash,0.1,high_margin,2,75,6,False,Erreur Gemini: 404 This model models/gemini-2.5-flash is no longer available to new users. Please update your code to use models/gemini-3.6-flash for the latest features and improvements. We recommend you to use the Interactions API.
+gemini-2.5-flash,0.1,low_margin,1,25,6,False,Erreur Gemini: 404 This model models/gemini-2.5-flash is no longer available to new users. Please update your code to use models/gemini-3.6-flash for the latest features and improvements. We recommend you to use the Interactions API.
+gemini-2.5-flash,0.1,low_margin,2,25,6,False,Erreur Gemini: 404 This model models/gemini-2.5-flash is no longer available to new users. Please update your code to use models/gemini-3.6-flash for the latest features and improvements. We recommend you to use the Interactions API.
+gemini-2.5-flash,0.7,high_margin,1,75,6,False,Erreur Gemini: 404 This model models/gemini-2.5-flash is no longer available to new users. Please update your code to use models/gemini-3.6-flash for the latest features and improvements. We recommend you to use the Interactions API.
+gemini-2.5-flash,0.7,high_margin,2,75,6,False,Erreur Gemini: 404 This model models/gemini-2.5-flash is no longer available to new users. Please update your code to use models/gemini-3.6-flash for the latest features and improvements. We recommend you to use the Interactions API.
+gemini-2.5-flash,0.7,low_margin,1,25,6,False,Erreur Gemini: 404 This model models/gemini-2.5-flash is no longer available to new users. Please update your code to use models/gemini-3.6-flash for the latest features and improvements. We recommend you to use the Interactions API.
+gemini-2.5-flash,0.7,low_margin,2,25,6,False,Erreur Gemini: 404 This model models/gemini-2.5-flash is no longer available to new users. Please update your code to use models/gemini-3.6-flash for the latest features and improvements. We recommend you to use the Interactions API.
+mistral,0.1,high_margin,1,75,11434,False,Erreur Ollama: 404 Client Error: Not Found for url: http://localhost:11434/api/generate
+mistral,0.1,high_margin,2,75,11434,False,Erreur Ollama: 404 Client Error: Not Found for url: http://localhost:11434/api/generate
+mistral,0.1,low_margin,1,25,11434,False,Erreur Ollama: 404 Client Error: Not Found for url: http://localhost:11434/api/generate
+mistral,0.1,low_margin,2,25,11434,False,Erreur Ollama: 404 Client Error: Not Found for url: http://localhost:11434/api/generate
+mistral,0.7,high_margin,1,75,11434,False,Erreur Ollama: 404 Client Error: Not Found for url: http://localhost:11434/api/generate
+mistral,0.7,high_margin,2,75,11434,False,Erreur Ollama: 404 Client Error: Not Found for url: http://localhost:11434/api/generate
+mistral,0.7,low_margin,1,25,11434,False,Erreur Ollama: 404 Client Error: Not Found for url: http://localhost:11434/api/generate
+mistral,0.7,low_margin,2,25,11434,False,Erreur Ollama: 404 Client Error: Not Found for url: http://localhost:11434/api/generate

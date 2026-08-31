@@ -1,0 +1,348 @@
+model,prompt_variant,iteration,optimal_qty,model_qty,raw_response
+gemini-3.6-flash,standard,1,75,75,"Pour déterminer la quantité optimale à commander afin de maximiser le profit espéré, nous devons utiliser le modèle classique du **vendeur de journaux** (*Newsvendor model*).
+
+Voici le détail du calcul :
+
+1. **Calcul des coûts marginaux :**
+   * **Coût de sous-stockage ($C_u$)** : C'est le manque à gagner si la demande dépasse notre commande d'une unité. 
+     $C_u = \text{Prix de vente} - \text{Coût d'achat} = 12\,\$ - 3\,\$ = 9\,\$$
+   * **Coût de sur-stockage ($C_o$)** : C'est la perte subie si une unité commandée ne trouve pas preneur.
+     $C_o = \text{Coût d'achat} - \text{Valeur de récupération} = 3\,\$ - 0\,\$ = 3\,\$$
+
+2. **Calcul du ratio critique (taux de service optimal) :**
+   Le ratio critique représente la probabilité idéale que la demande soit inférieure ou égale à la quantité commandée $Q^*$.
+   $$\text{Ratio critique} = \frac{C_u}{C_u + C_o} = \frac{9}{9 + 3} = \frac{9}{12} = 0{,}75 \text{ (soit 75 \%)}$$
+
+3. **Détermination de la quantité à commander :**
+   La demande étant distribuée de manière uniforme entre $0$ et $100$ unités, la fonction de répartition est linéaire. Pour couvrir 75 % de la distribution de la demande, nous devons commander le 75ᵉ percentile.
+   $$Q^* = 0 + 0{,}75 \times (100 - 0) = 75$$
+
+Comme le manque à gagner (9 $) est trois fois plus élevé que la perte liée à un invendu (3 $), il est rentable de prendre le risque d'avoir des invendus pour maximiser l'espérance de profit.
+
+DÉCISION FINALE: 75"
+gemini-3.6-flash,standard,2,75,75,"En tant que gérant, pour résoudre ce problème classique de gestion des stocks (connu sous le nom du *modèle du vendeur de journaux*), je dois trouver l'équilibre parfait entre le risque de manquer une vente et le risque d'avoir des invendus.
+
+Voici mon analyse :
+
+1. **Coût de sous-stockage ($C_u$)** : C'est le profit manqué pour chaque unité qu'un client aurait voulu acheter si j'avais eu du stock.
+   $C_u = \text{Prix de vente} - \text{Coût d'achat} = 12\$ - 3\$ = 9\$$
+
+2. **Coût de sur-stockage ($C_o$)** : C'est la perte subie pour chaque unité commandée mais non vendue.
+   $C_o = \text{Coût d'achat} - \text{Valeur de récupération} = 3\$ - 0\$ = 3\$$
+
+3. **Calcul du Ratio Critique ($CR$)** : Ce ratio détermine le niveau de service optimal, c'est-à-dire la probabilité de pouvoir répondre à la demande.
+   $CR = \frac{C_u}{C_u + C_o} = \frac{9}{9 + 3} = \frac{9}{12} = 0,75 \text{ (soit 75 \%)}$
+
+4. **Détermination de la quantité à commander** : 
+   La demande étant distribuée de manière uniforme entre 0 et 100, la quantité optimale $Q$ correspond au 75ᵉ percentile de cette distribution.
+   $Q = 0 + 0,75 \times (100 - 0) = 75$
+
+En commandant 75 unités, je maximise mon profit espéré en acceptant un risque de 25 % d'être en rupture de stock, ce qui est mathématiquement optimal au vu de ma marge forte (9 $) par rapport au coût de perte faible (3 $).
+
+DÉCISION FINALE: 75"
+gemini-3.6-flash,standard,3,75,75,"En tant que gérant, pour maximiser le profit espéré d'un produit périssable, je dois utiliser le modèle classique du **vendeur de journaux** (ou *Newsvendor model*). Ce modèle permet de trouver l'équilibre parfait entre le risque de sur-stockage (avoir des invendus) et le risque de sous-stockage (manquer des ventes).
+
+Voici le calcul étape par étape :
+
+1. **Coût de sous-stockage ($C_u$) :** C'est le manque à gagner pour chaque unité qu'on aurait pu vendre.
+   $$C_u = \text{Prix de vente} - \text{Coût d'achat} = 12\,\$ - 3\,\$ = 9\,\$$
+
+2. **Coût de sur-stockage ($C_o$) :** C'est la perte subie pour chaque unité achetée mais non vendue.
+   $$C_o = \text{Coût d'achat} - \text{Valeur de récupération} = 3\,\$ - 0\,\$ = 3\,\$$
+
+3. **Calcul du Ratio Critique ($CR$) :** Ce ratio représente la probabilité minimale que la demande soit inférieure ou égale à la quantité commandée $Q$.
+   $$CR = \frac{C_u}{C_u + C_o} = \frac{9}{9 + 3} = \frac{9}{12} = 0,75 \text{ (soit 75 \%)}$$
+
+4. **Détermination de la quantité optimale ($Q^*$) :**
+   La demande étant distribuée de manière uniforme entre 0 et 100, la quantité correspondant au 75ᵉ percentile de cette distribution se calcule directement :
+   $$Q^* = 0 \text{ (minimum)} + 0,75 \times (100 - 0) = 75$$
+
+Commander 75 unités permet d'accepter un risque raisonnable d'invendus tout en capturant la majorité du profit potentiel, étant donné que le gain par vente ($9) est trois fois plus élevé que la perte par invendu ($3).
+
+DÉCISION FINALE: 75"
+gemini-3.6-flash,paraphrase_1,1,75,75,"Ce problème est un cas classique du **modèle du vendeur de journaux** (ou *Newsvendor Problem*), utilisé pour déterminer la quantité optimale de commande pour des produits périssables.
+
+Voici le raisonnement étape par étape :
+
+### 1. Définition des coûts
+* **Coût de sous-stockage ($C_u$) :** C'est le manque à gagner pour chaque vente ratée par manque de stock.
+  $$C_u = \text{Prix de vente} - \text{Coût d'achat} = 12 - 3 = 9 \text{ dollars}$$
+
+* **Coût de sur-stockage ($C_o$) :** C'est la perte subie pour chaque unité achetée mais non vendue (valeur résiduelle nulle).
+  $$C_o = \text{Coût d'achat} - \text{Valeur résiduelle} = 3 - 0 = 3 \text{ dollars}$$
+
+### 2. Calcul du ratio critique
+Le ratio critique représente la probabilité cumulée de la demande jusqu'à laquelle il est rentable de stocker :
+$$\text{Ratio critique} = \frac{C_u}{C_u + C_o} = \frac{9}{9 + 3} = \frac{9}{12} = 0,75$$
+
+Cela signifie que pour maximiser votre gain espéré, vous devez approvisionner une quantité $Q$ telle que la probabilité que la demande soit inférieure ou égale à $Q$ soit d'au moins $75\%$.
+
+### 3. Prise en compte de la loi de demande
+La demande est uniformément répartie entre 0 et 100 articles inclus. Il y a donc **101 issues possibles** ($0, 1, 2, \dots, 100$), chacune ayant une probabilité de $\frac{1}{101}$.
+
+La fonction de répartition cumulée $P(D \le Q)$ est donnée par :
+$$P(D \le Q) = \frac{Q + 1}{101}$$
+
+### 4. Calcul de la quantité optimale ($Q$)
+On cherche la plus petite valeur entière de $Q$ telle que :
+$$\frac{Q + 1}{101} \ge 0,75$$
+
+$$Q + 1 \ge 0,75 \times 101$$
+$$Q + 1 \ge 75,75$$
+$$Q \ge 74,75$$
+
+Comme la quantité $Q$ doit être un nombre entier d'articles, on arrondit à l'entier supérieur : **$Q = 75$**.
+
+---
+
+DÉCISION FINALE: 75"
+gemini-3.6-flash,paraphrase_1,2,75,75,"Ce problème est un cas classique de gestion des stocks connu sous le nom du **problème du vendeur de journaux** (*Newsvendor Problem*). Pour maximiser les gains espérés, il faut trouver un équilibre entre le coût de commander trop peu et le coût de commander trop.
+
+Voici le raisonnement étape par étape :
+
+### 1. Identification des coûts unitaires
+* **Coût de sous-stockage ($C_u$) :** C'est le manque à gagner par unité si la demande dépasse l'offre.
+  $$C_u = \text{Prix de vente} - \text{Coût d'achat} = 12 - 3 = 9 \text{ dollars}$$
+
+* **Coût de sur-stockage ($C_o$) :** C'est la perte subie par unité invendue à la fin de la journée (valeur résiduelle nulle).
+  $$C_o = \text{Coût d'achat} - \text{Valeur résiduelle} = 3 - 0 = 3 \text{ dollars}$$
+
+### 2. Calcul du ratio critique (taux de service optimal)
+Le ratio critique nous indique le niveau de probabilité cumulée de la demande que notre quantité en stock doit couvrir.
+
+$$\text{Ratio Critique} = \frac{C_u}{C_u + C_o} = \frac{9}{9 + 3} = \frac{9}{12} = 0,75 \text{ (soit 75\%)}$$
+
+### 3. Application à la distribution de la demande
+La demande est uniforme entre 0 et 100 articles inclus, ce qui signifie qu'il y a **101 issues possibles** ($0, 1, 2, ..., 100$), chacune ayant une probabilité égale de $\frac{1}{101}$.
+
+Nous cherchons la plus petite quantité entière $Q$ telle que la probabilité que la demande soit inférieure ou égale à $Q$ soit d'au moins 75 % ($0,75$) :
+
+$$P(D \le Q) = \frac{Q + 1}{101} \ge 0,75$$
+
+$$Q + 1 \ge 0,75 \times 101$$
+$$Q + 1 \ge 75,75$$
+$$Q \ge 74,75$$
+
+Comme la quantité doit être un nombre entier, nous arrondissons à l'entier supérieur, soit **75**.
+
+*Vérification :*
+* Pour $Q = 74$, $P(D \le 74) = \frac{75}{101} \approx 74,26\%$ (insuffisant, $< 75\%$).
+* Pour $Q = 75$, $P(D \le 75) = \frac{76}{101} \approx 75,25\%$ (optimal, $\ge 75\%$).
+
+DÉCISION FINALE: 75"
+gemini-3.6-flash,paraphrase_1,3,75,75,"Ce problème est un exemple classique du **modèle du vendeur de journaux** (*Newsvendor Problem* en anglais), utilisé en gestion des stocks pour maximiser le profit espéré d'un produit périssable.
+
+Voici le raisonnement étape par étape :
+
+### 1. Identification des coûts
+* **Prix d'achat ($C$)** = 3 $
+* **Prix de vente ($P$)** = 12 $
+* **Valeur résiduelle ($V$)** = 0 $
+
+On calcule deux types de coûts :
+* **Coût de sous-stockage ($C_u$)** (manque à gagner par unité non vendue) :  
+  $C_u = P - C = 12 - 3 = 9 \$$
+* **Coût de sur-stockage ($C_o$)** (perte par unité non vendue en fin de journée) :  
+  $C_o = C - V = 3 - 0 = 3 \$$
+
+### 2. Calcul du ratio critique
+Le ratio critique représente la probabilité minimale pour laquelle une unité supplémentaire est rentable à stocker.
+
+$$\text{Ratio Critique} = \frac{C_u}{C_u + C_o} = \frac{9}{9 + 3} = \frac{9}{12} = 0,75 \text{ (soit 75 \%)}$$
+
+Cela signifie que nous devons nous approvisionner de manière à couvrir au moins 75 % de la distribution de la demande.
+
+### 3. Application à la distribution de la demande
+La demande est uniforme entre 0 et 100 inclus. Il y a donc 101 valeurs possibles $\{0, 1, 2, ..., 100\}$.
+
+Pour trouver la quantité optimale $Q$, la probabilité cumulée que la demande soit inférieure ou égale à $Q$ doit être supérieure ou égale au ratio critique ($0,75$) :
+
+$$P(D \le Q) = \frac{Q + 1}{101} \ge 0,75$$
+
+Résolution de l'inéquation :
+$$Q + 1 \ge 0,75 \times 101$$
+$$Q + 1 \ge 75,75$$
+$$Q \ge 74,75$$
+
+Puisque la quantité doit être un nombre entier, nous arrondissons à l'entier supérieur pour satisfaire la condition, soit **75**.
+
+DÉCISION FINALE: 75"
+gemini-3.6-flash,negative_framing,1,75,75,"Ce problème est un cas classique du **modèle du vendeur de journaux** (ou *Newsvendor Problem* en anglais). Pour déterminer le niveau de stock optimal qui minimise à la fois les coûts de sur-stockage et les coûts d'opportunité (ventes manquées), nous devons calculer le **ratio critique** (ou niveau de service optimal).
+
+### 1. Identification des coûts :
+* **Coût de sur-stockage ($C_o$)** : Le coût d'avoir une unité invendue à la fin de la période.
+  $$C_o = 3\ \$$
+* **Coût de sous-stockage ($C_u$)** : Le manque à gagner (bénéfice perdu) pour chaque vente manquée.
+  $$C_u = 9\ \$$
+
+### 2. Calcul du ratio critique :
+Le ratio critique représente la probabilité que la demande soit inférieure ou égale à la quantité stockée optimale $Q^*$. La formule est :
+$$P(D \le Q^*) = \frac{C_u}{C_u + C_o}$$
+
+En remplaçant par nos valeurs :
+$$P(D \le Q^*) = \frac{9}{9 + 3} = \frac{9}{12} = 0,75 \text{ (soit 75 \%)}$$
+
+### 3. Détermination de la quantité à stocker :
+La demande suit une loi uniforme continue entre 0 et 100. 
+Pour une distribution uniforme $U(A, B)$, la quantité correspondant à une probabilité cumulée $p$ est calculée par :
+$$Q^* = A + p \times (B - A)$$
+
+Ici, $A = 0$, $B = 100$ et $p = 0,75$ :
+$$Q^* = 0 + 0,75 \times (100 - 0) = 75$$
+
+Vous devez stocker 75 unités pour équilibrer parfaitement le risque d'invendus et le risque de manque à gagner.
+
+DÉCISION FINALE: 75"
+gemini-3.6-flash,negative_framing,2,75,75,"Pour déterminer le nombre d'unités optimal à stocker, nous devons utiliser la formule du **modèle du vendeur de journaux (Newsvendor Model)**, qui permet de maximiser le profit espéré (ou de minimiser les coûts d'opportunité et de sur-stockage) en présence d'une demande incertaine.
+
+### 1. Identification des coûts :
+* **Coût de sur-stockage ($C_o$)** : Coût d'avoir une unité en trop (invendue) = **3 $**
+* **Coût de sous-stockage ($C_u$)** : Manque à gagner pour une vente manquée (bénéfice non réalisé) = 12 $ - 3 $ = **9 $**
+
+### 2. Calcul du ratio critique :
+Le ratio critique représente la probabilité que la demande soit inférieure ou égale à la quantité stockée $Q^*$.
+$$\text{Ratio Critique} = \frac{C_u}{C_u + C_o} = \frac{9}{9 + 3} = \frac{9}{12} = 0{,}75 \text{ (soit 75 \%)}$$
+
+### 3. Détermination de la quantité à stocker :
+La demande suit une loi uniforme continue sur l'intervalle $[0, 100]$.
+La quantité optimale $Q^*$ correspond au percentile 75 de cette distribution :
+$$Q^* = 0{,}75 \times 100 = 75$$
+
+En stockant 75 unités, vous équilibrez parfaitement le risque d'avoir des invendus et le risque de rater des ventes.
+
+DÉCISION FINALE: 75"
+gemini-3.6-flash,negative_framing,3,75,75,"Ce problème relève du **modèle du vendeur de journaux** (*Newsvendor model* en anglais), qui permet de déterminer la quantité optimale à stocker face à une demande incertaine.
+
+### Justification :
+
+1. **Calcul des coûts d'erreur :**
+   * **Coût de sur-stockage ($C_o$) :** Avoir une unité invendue coûte **3 $** (perte brute par unité non vendue).
+   * **Coût de sous-stockage ($C_u$) :** Manquer une vente fait perdre le profit potentiel, soit $12 - $3 = **9 $** de manque à gagner.
+
+2. **Calcul du Ratio Critique ($CR$) :**
+   Le ratio critique représente la probabilité idéale de pouvoir satisfaire la demande pour équilibrer les risques de sur-stockage et de sous-stockage :
+   $$CR = \frac{C_u}{C_u + C_o} = \frac{9}{9 + 3} = \frac{9}{12} = 0{,}75 \text{ (soit 75 \%)}$$
+
+3. **Application à la loi de demande :**
+   La demande étant distribuée de façon uniforme entre 0 et 100, la quantité optimale $Q$ correspond directement au 75ᵉ percentile de cette distribution :
+   $$Q = 0{,}75 \times (100 - 0) = 75$$
+
+Comme le manque à gagner (9 $) est trois fois plus élevé que le coût d'un invendu (3 $), il est rentable de prendre plus de risque et de stocker au-delà de la demande moyenne (50 unités).
+
+DÉCISION FINALE: 75"
+gemini-3.6-flash,bossy_tone,1,75,75,"Pour déterminer la quantité optimale à commander afin de maximiser l'espérance du profit (problème du vendeur de journaux ou *Newsvendor Model*), voici le calcul étape par étape :
+
+### 1. Définition des paramètres
+* **Prix de vente ($P$)** = 12 $
+* **Coût unitaire ($C$)** = 3 $
+* **Valeur de récupération ($V$)** = 0 $
+* **Distribution de la demande** = Uniforme continue sur $[0, 100]$
+
+---
+
+### 2. Calcul des coûts de sous-stockage et sur-stockage
+* **Coût de sous-stockage ($C_u$)** (manque à gagner par unité non stockée) :
+  $$C_u = P - C = 12 - 3 = 9\,\$$
+
+* **Coût de sur-stockage ($C_o$)** (perte par unité invendue) :
+  $$C_o = C - V = 3 - 0 = 3\,\$$
+
+---
+
+### 3. Calcul du Ratio Critique ($CR$)
+Le ratio critique représente la probabilité optimale que la demande soit inférieure ou égale à la quantité commandée ($Q^*$) :
+$$CR = \frac{C_u}{C_u + C_o} = \frac{9}{9 + 3} = \frac{9}{12} = 0,75$$
+
+---
+
+### 4. Calcul de la quantité optimale ($Q^*$)
+La demande $D$ suit une loi uniforme continue sur $[0, 100]$. Sa fonction de répartition cumulative est donnée par :
+$$F(Q) = \frac{Q - 0}{100 - 0} = \frac{Q}{100}$$
+
+On cherche $Q^*$ tel que $F(Q^*) = CR$ :
+$$\frac{Q^*}{100} = 0,75 \implies Q^* = 0,75 \times 100 = 75$$
+
+---
+
+DÉCISION FINALE: 75"
+gemini-3.6-flash,bossy_tone,2,75,75,"Pour déterminer la quantité optimale à commander ($Q^*$), nous utilisons le modèle du vendeur de journaux (*Newsvendor model*), qui permet de maximiser l'espérance mathématique du profit.
+
+### 1. Identification des coûts marginaux
+
+* **Coût de sous-stockage ($C_u$)** : Manque à gagner par unité si la demande dépasse l'offre.
+  $$C_u = \text{Prix de vente} - \text{Coût unitaire} = 12 - 3 = 9\$$
+
+* **Coût de sur-stockage ($C_o$)** : Perte subie par unité invendue.
+  $$C_o = \text{Coût unitaire} - \text{Valeur de récupération} = 3 - 0 = 3\$$
+
+---
+
+### 2. Calcul du ratio critique (taux de service optimal)
+
+Le ratio critique $F(Q^*)$ représente la probabilité que la demande soit inférieure ou égale à la quantité commandée $Q^*$ :
+
+$$F(Q^*) = \frac{C_u}{C_u + C_o} = \frac{9}{9 + 3} = \frac{9}{12} = 0{,}75$$
+
+---
+
+### 3. Calcul de la quantité optimale ($Q^*$)
+
+La demande $D$ suit une distribution uniforme continue sur l'intervalle $[a, b] = [0, 100]$. Sa fonction de répartition est :
+
+$$F(x) = \frac{x - a}{b - a} = \frac{x - 0}{100 - 0} = \frac{x}{100}$$
+
+En égalisant la fonction de répartition au ratio critique :
+
+$$\frac{Q^*}{100} = 0{,}75 \implies Q^* = 0{,}75 \times 100 = 75$$
+
+---
+
+DÉCISION FINALE: 75"
+gemini-3.6-flash,bossy_tone,3,75,75,"Pour maximiser l'espérance de profit mathématique pour ce produit périssable, nous utilisons le **modèle du vendeur de journaux** (*Newsvendor model*).
+
+### 1. Identification des coûts marginaux
+
+* **Coût de sous-stockage ($C_u$)** : le manque à gagner par unité non vendue.
+  $$C_u = \text{Prix de vente} - \text{Coût unitaire} = 12 - 3 = 9\$$
+
+* **Coût de sur-stockage ($C_o$)** : la perte subie par unité invendue.
+  $$C_o = \text{Coût unitaire} - \text{Valeur de récupération} = 3 - 0 = 3\$$
+
+---
+
+### 2. Calcul du ratio critique (*Critical Ratio*)
+
+Le ratio critique représente la probabilité optimale que la demande soit inférieure ou égale à la quantité commandée $Q^*$ :
+
+$$\text{Ratio Critique (CR)} = \frac{C_u}{C_u + C_o} = \frac{9}{9 + 3} = \frac{9}{12} = 0{,}75$$
+
+---
+
+### 3. Calcul de la quantité optimale ($Q^*$)
+
+La demande $D$ suit une distribution uniforme continue sur l'intervalle $[0, 100]$. 
+La fonction de répartition (CDF) pour une loi uniforme $U[a, b]$ est donnée par :
+
+$$F(Q) = \frac{Q - a}{b - a} = \frac{Q - 0}{100 - 0} = \frac{Q}{100}$$
+
+Nous posons $F(Q^*) = \text{CR}$ :
+
+$$\frac{Q^*}{100} = 0{,}75$$
+
+$$Q^* = 0{,}75 \times 100 = 75$$
+
+---
+
+DÉCISION FINALE: 75"
+mistral,standard,1,75,11434,Erreur Ollama: 404 Client Error: Not Found for url: http://localhost:11434/api/generate
+mistral,standard,2,75,11434,Erreur Ollama: 404 Client Error: Not Found for url: http://localhost:11434/api/generate
+mistral,standard,3,75,11434,Erreur Ollama: 404 Client Error: Not Found for url: http://localhost:11434/api/generate
+mistral,paraphrase_1,1,75,11434,Erreur Ollama: 404 Client Error: Not Found for url: http://localhost:11434/api/generate
+mistral,paraphrase_1,2,75,11434,Erreur Ollama: 404 Client Error: Not Found for url: http://localhost:11434/api/generate
+mistral,paraphrase_1,3,75,11434,Erreur Ollama: 404 Client Error: Not Found for url: http://localhost:11434/api/generate
+mistral,negative_framing,1,75,11434,Erreur Ollama: 404 Client Error: Not Found for url: http://localhost:11434/api/generate
+mistral,negative_framing,2,75,11434,Erreur Ollama: 404 Client Error: Not Found for url: http://localhost:11434/api/generate
+mistral,negative_framing,3,75,11434,Erreur Ollama: 404 Client Error: Not Found for url: http://localhost:11434/api/generate
+mistral,bossy_tone,1,75,11434,Erreur Ollama: 404 Client Error: Not Found for url: http://localhost:11434/api/generate
+mistral,bossy_tone,2,75,11434,Erreur Ollama: 404 Client Error: Not Found for url: http://localhost:11434/api/generate
+mistral,bossy_tone,3,75,11434,Erreur Ollama: 404 Client Error: Not Found for url: http://localhost:11434/api/generate

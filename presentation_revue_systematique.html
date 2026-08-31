@@ -1,0 +1,1335 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revue Systématique de la Littérature</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.7;
+            color: #1a1a2e;
+            background: #ffffff;
+            padding: 40px 60px;
+            max-width: 1000px;
+            margin: 0 auto;
+            font-size: 11pt;
+        }
+        
+        h1 {
+            font-size: 24pt;
+            font-weight: 700;
+            color: #0f3460;
+            margin-top: 30px;
+            margin-bottom: 8px;
+            padding-bottom: 8px;
+            border-bottom: 3px solid #e94560;
+            page-break-after: avoid;
+        }
+        
+        h2 {
+            font-size: 18pt;
+            font-weight: 600;
+            color: #16213e;
+            margin-top: 35px;
+            margin-bottom: 12px;
+            padding-bottom: 6px;
+            border-bottom: 2px solid #0f3460;
+            page-break-after: avoid;
+        }
+        
+        h3 {
+            font-size: 14pt;
+            font-weight: 600;
+            color: #0f3460;
+            margin-top: 25px;
+            margin-bottom: 8px;
+            page-break-after: avoid;
+        }
+        
+        h4 {
+            font-size: 12pt;
+            font-weight: 600;
+            color: #533483;
+            margin-top: 18px;
+            margin-bottom: 6px;
+        }
+        
+        p {
+            margin-bottom: 10px;
+            text-align: justify;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 9.5pt;
+            page-break-inside: avoid;
+        }
+        
+        th {
+            background: linear-gradient(135deg, #0f3460, #16213e);
+            color: white;
+            padding: 10px 12px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 9pt;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        td {
+            padding: 8px 12px;
+            border-bottom: 1px solid #e8e8e8;
+            vertical-align: top;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        tr:hover {
+            background-color: #e8f0fe;
+        }
+        
+        blockquote {
+            border-left: 4px solid #e94560;
+            padding: 12px 20px;
+            margin: 15px 0;
+            background: #fef5f7;
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+            color: #333;
+        }
+        
+        code {
+            background: #f0f0f0;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 9pt;
+            color: #e94560;
+        }
+        
+        pre {
+            background: #1a1a2e;
+            color: #a9d1e8;
+            padding: 16px 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-size: 9pt;
+            line-height: 1.5;
+        }
+        
+        pre code {
+            background: transparent;
+            color: inherit;
+            padding: 0;
+        }
+        
+        hr {
+            border: none;
+            height: 2px;
+            background: linear-gradient(90deg, #e94560, #0f3460, #533483);
+            margin: 30px 0;
+        }
+        
+        strong {
+            color: #0f3460;
+            font-weight: 600;
+        }
+        
+        a {
+            color: #e94560;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin: 8px 0 15px 25px;
+        }
+        
+        li {
+            margin-bottom: 4px;
+        }
+        
+        /* Cover page styling */
+        body > h1:first-of-type {
+            text-align: center;
+            font-size: 28pt;
+            margin-top: 60px;
+            border-bottom: 4px solid #e94560;
+            padding-bottom: 15px;
+        }
+        
+        body > h2:first-of-type {
+            text-align: center;
+            font-size: 16pt;
+            color: #533483;
+            border-bottom: none;
+            margin-top: 10px;
+        }
+        
+        body > h3:first-of-type {
+            text-align: center;
+            font-size: 12pt;
+            color: #666;
+            font-weight: 400;
+            margin-bottom: 40px;
+        }
+        
+        /* Print styles */
+        @media print {
+            body {
+                padding: 20px 40px;
+                font-size: 10pt;
+            }
+            
+            h1 { page-break-after: avoid; }
+            h2 { page-break-after: avoid; page-break-before: auto; }
+            table { page-break-inside: avoid; }
+            
+            @page {
+                size: A4;
+                margin: 2cm;
+            }
+        }
+        
+        /* Alert boxes */
+        .alert {
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin: 12px 0;
+            font-size: 10pt;
+        }
+    </style>
+</head>
+<body>
+<h1 id="revue-systematique-de-la-litterature">Revue Systématique de la Littérature</h1>
+<h2 id="les-large-language-models-peuvent-ils-prendre-des-decisions-dinventaire-sans-biais">Les Large Language Models Peuvent-ils Prendre des Décisions d'Inventaire Sans Biais ?</h2>
+<h3 id="une-revue-multi-flux-a-lintersection-des-operations-comportementales-de-la-prise-de-decision-par-lia-et-de-la-gouvernance-algorithmique">Une Revue Multi-Flux à l'Intersection des Opérations Comportementales, de la Prise de Décision par l'IA et de la Gouvernance Algorithmique</h3>
+<hr>
+<p><strong>Préparé par :</strong> [Votre Nom]<br>
+<strong>Date :</strong> Août 2026<br>
+<strong>Encadrant :</strong> [Nom du Professeur]<br>
+<strong>Institution :</strong> [Nom de l'Institution]</p>
+<hr>
+<h2 id="table-des-matieres">Table des Matières</h2>
+<ol>
+<li><a href="#1-aperçu-du-projet-et-motivation">Aperçu du Projet et Motivation</a></li>
+<li><a href="#2-questions-de-recherche">Questions de Recherche</a></li>
+<li><a href="#3-méthodologie-de-recherche">Méthodologie de Recherche</a></li>
+<li><a href="#4-stream-1">Stream 1 — Opérations Comportementales et Décisions d'Inventaire</a></li>
+<li><a href="#5-stream-2">Stream 2 — LLM et Décisions Économiques/Managériales</a></li>
+<li><a href="#6-stream-3">Stream 3 — Sensibilité aux Prompts et Robustesse Sémantique</a></li>
+<li><a href="#7-stream-4">Stream 4 — Fidélité du Raisonnement Généré</a></li>
+<li><a href="#8-stream-5">Stream 5 — Interaction Multi-LLM</a></li>
+<li><a href="#9-stream-6">Stream 6 — Confiance Humaine dans les Conseils Algorithmiques</a></li>
+<li><a href="#10-stream-7">Stream 7 — Gouvernance et Audit de l'IA</a></li>
+<li><a href="#11-carte-conceptuelle">Carte Conceptuelle Inter-Streams</a></li>
+<li><a href="#12-analyse-des-lacunes">Analyse des Lacunes de Recherche</a></li>
+<li><a href="#13-synthèse">Synthèse et Prochaines Étapes</a></li>
+</ol>
+<hr>
+<h2 id="1-apercu-du-projet-et-motivation">1. Aperçu du Projet et Motivation</h2>
+<h3 id="11-contexte">1.1 Contexte</h3>
+<p>L'émergence des Large Language Models (LLMs) tels que GPT-4, Claude et Gemini comme outils potentiels d'aide à la décision soulève une question fondamentale pour la gestion des opérations :</p>
+<blockquote>
+<p><strong>Les systèmes d'IA peuvent-ils surmonter les biais comportementaux bien documentés qui affectent les décideurs humains en matière d'inventaire, ou héritent-ils — voire amplifient-ils — les mêmes limitations cognitives ?</strong></p>
+</blockquote>
+<h3 id="12-pourquoi-cest-important">1.2 Pourquoi c'est Important</h3>
+<ul>
+<li><strong>25+ ans de recherche</strong> montrent que les humains prennent systématiquement de mauvaises décisions d'inventaire (effet pull-to-center, demand chasing, etc.)</li>
+<li>Les LLMs sont de plus en plus utilisés comme <strong>conseillers décisionnels</strong> dans les entreprises</li>
+<li><strong>Aucune étude systématique</strong> n'a encore cartographié l'ensemble du paysage de recherche reliant les biais humains, les biais des LLMs, et les mécanismes de gouvernance</li>
+</ul>
+<h3 id="13-contribution">1.3 Contribution</h3>
+<p>Cette revue synthétise <strong>261+ articles</strong> répartis sur 7 flux de recherche couvrant les opérations comportementales, le NLP, l'économie comportementale et la gouvernance de l'IA.</p>
+<hr>
+<h2 id="2-questions-de-recherche">2. Questions de Recherche</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Question de Recherche</th>
+<th>Stream</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>QR1</td>
+<td>Quels biais comportementaux déforment systématiquement les décisions d'inventaire humaines ?</td>
+<td>Stream 1</td>
+</tr>
+<tr>
+<td>QR2</td>
+<td>Les LLMs présentent-ils des biais similaires dans les décisions économiques et managériales ?</td>
+<td>Stream 2</td>
+</tr>
+<tr>
+<td>QR3</td>
+<td>Les décisions des LLMs sont-elles sensibles à la formulation des prompts ?</td>
+<td>Stream 3</td>
+</tr>
+<tr>
+<td>QR4</td>
+<td>Les explications générées par les LLMs sont-elles fidèles à leur raisonnement réel ?</td>
+<td>Stream 4</td>
+</tr>
+<tr>
+<td>QR5</td>
+<td>Les architectures multi-LLM peuvent-elles atténuer les biais individuels ?</td>
+<td>Stream 5</td>
+</tr>
+<tr>
+<td>QR6</td>
+<td>Comment les humains calibrent-ils leur confiance dans les conseils algorithmiques ?</td>
+<td>Stream 6</td>
+</tr>
+<tr>
+<td>QR7</td>
+<td>Quels cadres de gouvernance garantissent une aide à la décision IA fiable ?</td>
+<td>Stream 7</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="3-methodologie-de-recherche">3. Méthodologie de Recherche</h2>
+<h3 id="31-strategie-de-recherche-alignee-prisma">3.1 Stratégie de Recherche (Alignée PRISMA)</h3>
+<p><strong>Identification</strong> → 11 bases de données × 7 streams × 100+ requêtes → <strong>Filtrage</strong> → Pertinence titre/résumé → <strong>Éligibilité</strong> → Évaluation texte intégral → <strong>Inclusion</strong> → 261+ articles uniques dédupliqués</p>
+<h3 id="32-bases-de-donnees-consultees">3.2 Bases de Données Consultées</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Base de Données</th>
+<th>Type</th>
+<th>Couverture</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Web of Science</td>
+<td>Index de citations</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Scopus (via OpenAlex)</td>
+<td>Index de citations</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>3</td>
+<td>ABI/INFORM</td>
+<td>Business</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Business Source Complete</td>
+<td>Business</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>5</td>
+<td>ACM Digital Library</td>
+<td>Informatique</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>6</td>
+<td>IEEE Xplore</td>
+<td>Ingénierie/CS</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>7</td>
+<td>ACL Anthology</td>
+<td>NLP/Linguistique</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>8</td>
+<td>INFORMS</td>
+<td>Recherche Opérationnelle</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>9</td>
+<td>SSRN</td>
+<td>Working Papers</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>10</td>
+<td>arXiv</td>
+<td>Prépublications</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Google Scholar</td>
+<td>Interdisciplinaire</td>
+<td>✅</td>
+</tr>
+</tbody>
+</table>
+<h3 id="33-statistiques-globales">3.3 Statistiques Globales</h3>
+<table>
+<thead>
+<tr>
+<th>Métrique</th>
+<th>Valeur</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Total articles identifiés</strong></td>
+<td><strong>261+</strong></td>
+</tr>
+<tr>
+<td><strong>Bases de données consultées</strong></td>
+<td><strong>11</strong></td>
+</tr>
+<tr>
+<td><strong>Requêtes exécutées</strong></td>
+<td><strong>100+</strong></td>
+</tr>
+<tr>
+<td><strong>Période couverte</strong></td>
+<td><strong>1989–2026</strong></td>
+</tr>
+<tr>
+<td><strong>Streams de recherche</strong></td>
+<td><strong>7</strong></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="4-stream-1-operations-comportementales-et-decisions-dinventaire">4. Stream 1 — Opérations Comportementales et Décisions d'Inventaire</h2>
+<h3 id="requete-de-recherche">Requête de Recherche</h3>
+<pre><code>newsvendor · newsboy · inventory decision · behavioral operations · 
+pull-to-center · demand chasing · mental accounting · prospect theory · inventory bias
+</code></pre>
+<h3 id="resume-52-articles-19892025-revues-dominantes-management-science-msom">Résumé : 52 articles | 1989–2025 | Revues dominantes : Management Science, M&amp;SOM</h3>
+<h3 id="constat-principal">Constat Principal</h3>
+<p>Les décideurs humains en matière d'inventaire présentent systématiquement l'<strong>effet pull-to-center</strong> : ils <strong>sous-commandent</strong> les produits à forte marge et <strong>sur-commandent</strong> les produits à faible marge par rapport à la quantité optimale du newsvendor.</p>
+<h3 id="articles-fondamentaux">Articles Fondamentaux</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Auteurs</th>
+<th>Année</th>
+<th>Titre</th>
+<th>Revue</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Schweitzer &amp; Cachon</td>
+<td>2000</td>
+<td>Decision Bias in the Newsvendor Problem</td>
+<td><em>Management Science</em></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Su, X.</td>
+<td>2008</td>
+<td>Bounded Rationality in Newsvendor Models</td>
+<td><em>M&amp;SOM</em></td>
+</tr>
+<tr>
+<td>3</td>
+<td>Gino &amp; Pisano</td>
+<td>2008</td>
+<td>Toward a Theory of Behavioral Operations</td>
+<td><em>M&amp;SOM</em></td>
+</tr>
+<tr>
+<td>4</td>
+<td>Bolton, Ockenfels &amp; Thonemann</td>
+<td>2012</td>
+<td>Managers and Students as Newsvendors</td>
+<td><em>Management Science</em></td>
+</tr>
+<tr>
+<td>5</td>
+<td>Long &amp; Nasiry</td>
+<td>2015</td>
+<td>Prospect Theory Explains Newsvendor Behavior</td>
+<td><em>Management Science</em></td>
+</tr>
+</tbody>
+</table>
+<h3 id="themes-cles-identifies">Thèmes Clés Identifiés</h3>
+<table>
+<thead>
+<tr>
+<th>Thème</th>
+<th>Description</th>
+<th>Articles Clés</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Effet Pull-to-Center</strong></td>
+<td>Biais systématique vers la moyenne de la demande</td>
+<td>Schweitzer &amp; Cachon (2000), Bolton et al. (2012)</td>
+</tr>
+<tr>
+<td><strong>Demand Chasing</strong></td>
+<td>Ajustement réactif aux réalisations passées de la demande</td>
+<td>Lau &amp; Bearden (2013), Kirshner &amp; Moritz (2021)</td>
+</tr>
+<tr>
+<td><strong>Comptabilité Mentale</strong></td>
+<td>Le cadrage du schéma de paiement modifie les quantités commandées</td>
+<td>Chen, Kök &amp; Tong (2013)</td>
+</tr>
+<tr>
+<td><strong>Théorie des Perspectives</strong></td>
+<td>Points de référence endogènes expliquent le pull-to-center</td>
+<td>Long &amp; Nasiry (2015), Uppari &amp; Hasija (2019)</td>
+</tr>
+<tr>
+<td><strong>Biais d'Observation</strong></td>
+<td>Les ventes perdues non observables faussent l'apprentissage</td>
+<td>Rudi &amp; Drake (2014), Feiler et al. (2013)</td>
+</tr>
+<tr>
+<td><strong>Excès de Confiance</strong></td>
+<td>Surestimation de la précision dans l'estimation de la variance</td>
+<td>Ren &amp; Croson (2013)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="evolution-theorique">Évolution Théorique</h3>
+<p>Ancrage (2000) → Rationalité Limitée (2008) → Théorie des Perspectives (2010–2015) → Comptabilité Mentale (2013–2020) → Méta-Analyse (2019)</p>
+<h3 id="mecanismes-de-debiaisage-identifies">Mécanismes de Débiaisage Identifiés</h3>
+<ul>
+<li>Feedback structuré sur les gains manqués (Bolton &amp; Katok, 2008)</li>
+<li>Contrats comportementaux calibrés (Becker-Peth et al., 2013)</li>
+<li>Cadrage des objectifs (Kosgoda et al., 2024)</li>
+<li>Nudges d'estimation REDO (Tong et al., 2018)</li>
+<li>Pratique intensive (100+ tours) (Brokesova et al., 2025)</li>
+</ul>
+<hr>
+<h2 id="5-stream-2-llm-et-decisions-economiquesmanageriales">5. Stream 2 — LLM et Décisions Économiques/Managériales</h2>
+<h3 id="requete-de-recherche_1">Requête de Recherche</h3>
+<pre><code>(&quot;large language model&quot; OU LLM OU GPT) ET 
+(&quot;managerial decision&quot; OU &quot;decision support&quot; OU advice OU &quot;economic rationality&quot; OU &quot;behavioral bias&quot;)
+</code></pre>
+<h3 id="resume-45-articles-20232026-revues-dominantes-pnas-nber-informs-neurips">Résumé : 45 articles | 2023–2026 | Revues dominantes : PNAS, NBER, INFORMS, NeurIPS</h3>
+<h3 id="constat-principal-le-paradoxe-rationalite-biais">Constat Principal : Le Paradoxe Rationalité-Biais</h3>
+<p>Les LLMs montrent une <strong>haute consistance dans les tests formels de rationalité</strong> (scores GARP supérieurs aux humains) mais sont simultanément <strong>susceptibles aux effets de cadrage, au biais des coûts irrécupérables et aux biais opérationnels</strong>.</p>
+<h3 id="articles-fondamentaux_1">Articles Fondamentaux</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Auteurs</th>
+<th>Année</th>
+<th>Titre</th>
+<th>Revue</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Chen, Liu, Shan &amp; Zhong</td>
+<td>2023</td>
+<td>The Emergence of Economic Rationality of GPT</td>
+<td><em>PNAS</em></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Binz &amp; Schulz</td>
+<td>2023</td>
+<td>Using Cognitive Psychology to Understand GPT-3</td>
+<td><em>PNAS</em></td>
+</tr>
+<tr>
+<td>3</td>
+<td>Chen, Kirshner et al.</td>
+<td>2025</td>
+<td>A Manager and an AI Walk into a Bar</td>
+<td><em>M&amp;SOM (INFORMS)</em></td>
+</tr>
+<tr>
+<td>4</td>
+<td>Horton, Filippas &amp; Manning</td>
+<td>2023</td>
+<td>Homo Silicus</td>
+<td><em>NBER WP 31122</em></td>
+</tr>
+<tr>
+<td>5</td>
+<td>Su, Lang &amp; Chen</td>
+<td>2023</td>
+<td>Can AI Solve Newsvendor Without Bias?</td>
+<td><em>SSRN</em></td>
+</tr>
+<tr>
+<td>6</td>
+<td>Bini, Cong, Huang &amp; Jin</td>
+<td>2026</td>
+<td>Behavioral Economics of AI</td>
+<td><em>NBER WP 34745</em></td>
+</tr>
+</tbody>
+</table>
+<h3 id="comparaison-des-biais-humain-vs-llm">Comparaison des Biais : Humain vs. LLM</h3>
+<table>
+<thead>
+<tr>
+<th>Biais</th>
+<th>Évidence Humaine</th>
+<th>Évidence LLM</th>
+<th>Résultat</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Pull-to-center</strong></td>
+<td>Schweitzer &amp; Cachon (2000)</td>
+<td>Su et al. (2023)</td>
+<td>LLM reproduit</td>
+</tr>
+<tr>
+<td><strong>Demand chasing</strong></td>
+<td>Lau &amp; Bearden (2013)</td>
+<td>Zhao et al. (2025)</td>
+<td>LLM reproduit</td>
+</tr>
+<tr>
+<td><strong>Coûts irrécupérables</strong></td>
+<td>Arkes &amp; Blumer (1985)</td>
+<td>Chen et al. (2025)</td>
+<td>LLM reproduit</td>
+</tr>
+<tr>
+<td><strong>Aversion aux pertes</strong></td>
+<td>Kahneman &amp; Tversky (1979)</td>
+<td>Jia et al. (2024)</td>
+<td>LLM reproduit (λ ≈ 2.0)</td>
+</tr>
+<tr>
+<td><strong>Hyper-équité</strong></td>
+<td>Non observé chez les humains</td>
+<td>Brookins (2024)</td>
+<td>Spécifique aux LLMs</td>
+</tr>
+<tr>
+<td><strong>Sycophantisme</strong></td>
+<td>Non observé chez les humains</td>
+<td>Perga (2024)</td>
+<td>Spécifique aux LLMs</td>
+</tr>
+</tbody>
+</table>
+<h3 id="effet-de-la-taille-du-modele-bini-et-al-2026">Effet de la Taille du Modèle (Bini et al., 2026)</h3>
+<table>
+<thead>
+<tr>
+<th>Type de Tâche</th>
+<th>Petits Modèles</th>
+<th>Grands Modèles</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Croyances/calcul</strong></td>
+<td>Plus biaisés</td>
+<td>Plus rationnels ↗️</td>
+</tr>
+<tr>
+<td><strong>Préférences/cadrage</strong></td>
+<td>Moins humains</td>
+<td>Plus humains (plus biaisés) ↘️</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="6-stream-3-sensibilite-aux-prompts-et-robustesse-semantique">6. Stream 3 — Sensibilité aux Prompts et Robustesse Sémantique</h2>
+<h3 id="requete-de-recherche_2">Requête de Recherche</h3>
+<pre><code>(&quot;large language model&quot; OU LLM) ET 
+(&quot;prompt sensitivity&quot; OU &quot;paraphrase robustness&quot; OU invariance OU consistency OU &quot;semantic equivalence&quot;)
+</code></pre>
+<h3 id="resume-35-articles-20212026">Résumé : 35 articles | 2021–2026</h3>
+<h3 id="constat-principal_1">Constat Principal</h3>
+<p>Les LLMs sont <strong>extrêmement sensibles</strong> à la reformulation des prompts. Des modifications mineures (ponctuation, ordre des mots, ton) peuvent provoquer des <strong>variations de performance allant jusqu'à 45%</strong> sur la même tâche.</p>
+<h3 id="articles-fondamentaux_2">Articles Fondamentaux</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Auteurs</th>
+<th>Année</th>
+<th>Titre</th>
+<th>Revue</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Farquhar et al.</td>
+<td>2024</td>
+<td>Detecting Hallucinations Using Semantic Entropy</td>
+<td><em>Nature</em></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Zhao, Wallace et al.</td>
+<td>2021</td>
+<td>Calibrate Before Use</td>
+<td><em>ICML 2021</em></td>
+</tr>
+<tr>
+<td>3</td>
+<td>Zhu et al.</td>
+<td>2023</td>
+<td>PromptBench: Robustness Evaluation</td>
+<td><em>NeurIPS 2023</em></td>
+</tr>
+<tr>
+<td>4</td>
+<td>Romanou et al.</td>
+<td>2026</td>
+<td>Brittlebench: Quantifying LLM Robustness</td>
+<td><em>arXiv</em></td>
+</tr>
+<tr>
+<td>5</td>
+<td>Cheung, Maier &amp; Lieder</td>
+<td>2025</td>
+<td>Amplified Cognitive Biases in Moral Decisions</td>
+<td><em>PNAS</em></td>
+</tr>
+</tbody>
+</table>
+<h3 id="taxonomie-des-resultats">Taxonomie des Résultats</h3>
+<table>
+<thead>
+<tr>
+<th>Catégorie</th>
+<th>Description</th>
+<th>Articles Clés</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Métriques de sensibilité</strong></td>
+<td>POSIX, PromptSensiScore, Brittlebench</td>
+<td>Chatterjee et al. (2024), Zhuo et al. (2024)</td>
+</tr>
+<tr>
+<td><strong>Entropie sémantique</strong></td>
+<td>Distinguer l'incertitude réelle des variations syntaxiques</td>
+<td>Farquhar et al. (2024, Nature), Kuhn et al. (2023)</td>
+</tr>
+<tr>
+<td><strong>Attaques adversariales</strong></td>
+<td>Paraphrases préservant le sens mais déstabilisant le modèle</td>
+<td>PromptAttack (2024), LinkPrompt (2024), AdvGLUE</td>
+</tr>
+<tr>
+<td><strong>Effets de cadrage</strong></td>
+<td>Biais cognitifs déclenchés par la reformulation</td>
+<td>Cheung et al. (2025, PNAS), Rupprecht et al. (2025)</td>
+</tr>
+<tr>
+<td><strong>Atténuation</strong></td>
+<td>Calibration contextuelle, PPCL, self-consistency</td>
+<td>Zhao et al. (2021), Qiang et al. (2024), Wang et al. (2023)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="implication-pour-le-projet">Implication pour le Projet</h3>
+<blockquote>
+<p>Si les décisions d'inventaire des LLMs changent quand le même problème de newsvendor est formulé différemment, la <strong>fiabilité du LLM comme décideur est fondamentalement compromise</strong>.</p>
+</blockquote>
+<hr>
+<h2 id="7-stream-4-fidelite-du-raisonnement-genere">7. Stream 4 — Fidélité du Raisonnement Généré</h2>
+<h3 id="requete-de-recherche_3">Requête de Recherche</h3>
+<pre><code>(&quot;large language model&quot; OU LLM) ET 
+(&quot;chain of thought&quot; OU rationale OU explanation) ET 
+(faithful OU unfaithful OU causal OU intervention)
+</code></pre>
+<h3 id="resume-30-articles-20192026">Résumé : 30 articles | 2019–2026</h3>
+<h3 id="constat-principal_2">Constat Principal</h3>
+<p>Les LLMs génèrent souvent des chaînes de raisonnement <strong>plausibles mais infidèles</strong> — des rationalisations post-hoc qui ne reflètent pas le calcul réel du modèle.</p>
+<h3 id="articles-fondamentaux_3">Articles Fondamentaux</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Auteurs</th>
+<th>Année</th>
+<th>Titre</th>
+<th>Revue</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Turpin, Michael, Perez &amp; Bowman</td>
+<td>2023</td>
+<td>Unfaithful Explanations in Chain-of-Thought</td>
+<td><em>NeurIPS 2023</em></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Lanham et al. (Anthropic)</td>
+<td>2023</td>
+<td>Measuring Faithfulness in CoT Reasoning</td>
+<td><em>arXiv</em></td>
+</tr>
+<tr>
+<td>3</td>
+<td>Jacovi &amp; Goldberg</td>
+<td>2020</td>
+<td>How Should We Define Faithfulness?</td>
+<td><em>ACL 2020</em></td>
+</tr>
+<tr>
+<td>4</td>
+<td>Lightman et al. (OpenAI)</td>
+<td>2023</td>
+<td>Let's Verify Step by Step (PRM800K)</td>
+<td><em>arXiv</em></td>
+</tr>
+<tr>
+<td>5</td>
+<td>Gao et al.</td>
+<td>2023</td>
+<td>PAL: Program-Aided Language Models</td>
+<td><em>ICML 2023</em></td>
+</tr>
+</tbody>
+</table>
+<h3 id="distinction-cle-plausibilite-vs-fidelite">Distinction Clé : Plausibilité vs. Fidélité</h3>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Définition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Plausibilité</strong></td>
+<td>L'explication semble convaincante et cohérente pour un humain</td>
+</tr>
+<tr>
+<td><strong>Fidélité</strong></td>
+<td>L'explication reflète véritablement le processus de calcul interne du modèle</td>
+</tr>
+</tbody>
+</table>
+<h3 id="categories-de-recherche">Catégories de Recherche</h3>
+<table>
+<thead>
+<tr>
+<th>Catégorie</th>
+<th>Description</th>
+<th>Articles</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Preuves d'infidélité du CoT</strong></td>
+<td>Les LLMs rationalisent des réponses biaisées sans mentionner le biais</td>
+<td>Turpin et al. (2023), Lanham et al. (2023)</td>
+</tr>
+<tr>
+<td><strong>Analyse causale</strong></td>
+<td>Médiation causale, interventions sur les activations</td>
+<td>Paul et al. (2024), Fu et al. (2025)</td>
+</tr>
+<tr>
+<td><strong>Sycophantisme dans le raisonnement</strong></td>
+<td>Les modèles génèrent des explications pour confirmer les pré-conceptions de l'utilisateur</td>
+<td>Sharma et al. (2023, Anthropic)</td>
+</tr>
+<tr>
+<td><strong>Benchmarks de fidélité</strong></td>
+<td>FaithCoT-Bench, GRACE, C2-Faith</td>
+<td>Shen et al. (2025), Pham et al. (2026)</td>
+</tr>
+<tr>
+<td><strong>Interprétabilité mécaniste</strong></td>
+<td>Circuits internes, autoencodeurs épars</td>
+<td>CIE-Scorer (2026), Dura et al. (2026)</td>
+</tr>
+<tr>
+<td><strong>Architectures garantissant la fidélité</strong></td>
+<td>Neuro-symbolique (PAL, PoT), décomposition</td>
+<td>Gao et al. (2023), Chen et al. (2023)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="implication-pour-le-projet_1">Implication pour le Projet</h3>
+<blockquote>
+<p>Quand un LLM explique <em>pourquoi</em> il a choisi une quantité de commande, cette explication peut être une <strong>rationalisation post-hoc</strong> et non un reflet de son calcul réel.</p>
+</blockquote>
+<hr>
+<h2 id="8-stream-5-interaction-multi-llm">8. Stream 5 — Interaction Multi-LLM</h2>
+<h3 id="requete-de-recherche_4">Requête de Recherche</h3>
+<pre><code>(&quot;large language model&quot; OU LLM) ET 
+(&quot;multi-agent&quot; OU debate OU deliberation OU committee OU ensemble OU conformity OU sycophancy OU &quot;groupthink&quot;)
+</code></pre>
+<h3 id="resume-32-articles-20182026">Résumé : 32 articles | 2018–2026</h3>
+<h3 id="constat-principal_3">Constat Principal</h3>
+<p>Le débat multi-agents peut améliorer la précision, mais les LLMs sont <strong>extrêmement susceptibles à la conformité</strong> — abandonnant leurs réponses correctes jusqu'à <strong>70–85% du temps</strong> sous la pression des pairs.</p>
+<h3 id="articles-fondamentaux_4">Articles Fondamentaux</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Auteurs</th>
+<th>Année</th>
+<th>Titre</th>
+<th>Revue</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Du et al.</td>
+<td>2024</td>
+<td>Improving Factuality through Multiagent Debate</td>
+<td><em>ICML 2024</em></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Chen et al.</td>
+<td>2024</td>
+<td>RECONCILE: Round-Table Conference</td>
+<td><em>ACL 2024</em></td>
+</tr>
+<tr>
+<td>3</td>
+<td>Weng et al.</td>
+<td>2025</td>
+<td>BenchForm: Conformity in LLM Multi-Agent Systems</td>
+<td><em>ICLR 2025</em></td>
+</tr>
+<tr>
+<td>4</td>
+<td>Irving, Christiano &amp; Amodei</td>
+<td>2018</td>
+<td>AI Safety via Debate</td>
+<td><em>arXiv</em></td>
+</tr>
+<tr>
+<td>5</td>
+<td>Bertalanič &amp; Fortuna</td>
+<td>2026</td>
+<td>The Cost of Consensus</td>
+<td><em>ACM CAIS 2026</em></td>
+</tr>
+</tbody>
+</table>
+<h3 id="resultats-cles">Résultats Clés</h3>
+<table>
+<thead>
+<tr>
+<th>Dimension</th>
+<th>Constat</th>
+<th>Articles</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Débat multi-agents</strong></td>
+<td>Brise le piège de la Dégénération-de-Pensée des LLMs individuels</td>
+<td>Du et al. (2024), Liang et al. (2024)</td>
+</tr>
+<tr>
+<td><strong>Comités hétérogènes</strong></td>
+<td>Modèles différents &gt; copies du même modèle</td>
+<td>RECONCILE (2024), MoA (2024)</td>
+</tr>
+<tr>
+<td><strong>Conformité &amp; Sycophantisme</strong></td>
+<td>LLMs adoptent la majorité 64–85% du temps, même si elle est incorrecte</td>
+<td>BenchForm (2025), Bertalanič (2026)</td>
+</tr>
+<tr>
+<td><strong>Ignorance Pluralistique</strong></td>
+<td>Chaque agent est correct en privé mais se conforme en public</td>
+<td>Yashwanth (2026)</td>
+</tr>
+<tr>
+<td><strong>Auto-correction isolée</strong></td>
+<td>Souvent supérieure au débat homogène non guidé</td>
+<td>Bertalanič &amp; Fortuna (2026)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="implication-pour-le-projet_2">Implication pour le Projet</h3>
+<blockquote>
+<p>Peut-on utiliser un <strong>comité de LLMs</strong> pour réduire le biais pull-to-center dans les décisions de newsvendor ? Les résultats sont mitigés : le potentiel existe mais le risque de <strong>groupthink</strong> est élevé.</p>
+</blockquote>
+<hr>
+<h2 id="9-stream-6-confiance-humaine-dans-les-conseils-algorithmiques">9. Stream 6 — Confiance Humaine dans les Conseils Algorithmiques</h2>
+<h3 id="requete-de-recherche_5">Requête de Recherche</h3>
+<pre><code>(&quot;algorithm aversion&quot; OU &quot;algorithm appreciation&quot; OU &quot;advice taking&quot; 
+OU &quot;human-AI reliance&quot; OU &quot;automation bias&quot; OU &quot;calibrated trust&quot;)
+</code></pre>
+<h3 id="resume-35-articles-19962026">Résumé : 35 articles | 1996–2026</h3>
+<h3 id="constat-principal_4">Constat Principal</h3>
+<p>Les humains présentent une <strong>tolérance asymétrique aux erreurs</strong> : une erreur algorithmique est perçue comme preuve d'incompétence fondamentale, alors qu'une erreur humaine identique est normalisée.</p>
+<h3 id="articles-fondamentaux_5">Articles Fondamentaux</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Auteurs</th>
+<th>Année</th>
+<th>Titre</th>
+<th>Revue</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Dietvorst, Simmons &amp; Massey</td>
+<td>2015</td>
+<td>Algorithm Aversion</td>
+<td><em>J. Exp. Psych: General</em></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Logg, Minson &amp; Moore</td>
+<td>2019</td>
+<td>Algorithm Appreciation</td>
+<td><em>OBHDP</em></td>
+</tr>
+<tr>
+<td>3</td>
+<td>Lee &amp; See</td>
+<td>2004</td>
+<td>Trust in Automation</td>
+<td><em>Human Factors</em></td>
+</tr>
+<tr>
+<td>4</td>
+<td>Parasuraman &amp; Manzey</td>
+<td>2010</td>
+<td>Complacency and Bias in Automation</td>
+<td><em>Human Factors</em></td>
+</tr>
+<tr>
+<td>5</td>
+<td>Buçinca, Malaya &amp; Gajos</td>
+<td>2021</td>
+<td>Cognitive Forcing Functions</td>
+<td><em>CSCW</em></td>
+</tr>
+</tbody>
+</table>
+<h3 id="paradigmes-theoriques">Paradigmes Théoriques</h3>
+<table>
+<thead>
+<tr>
+<th>Paradigme</th>
+<th>Description</th>
+<th>Articles Clés</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Aversion algorithmique</strong></td>
+<td>Les humains rejettent les algorithmes après les avoir vus commettre des erreurs</td>
+<td>Dietvorst et al. (2015, 2018)</td>
+</tr>
+<tr>
+<td><strong>Appréciation algorithmique</strong></td>
+<td>Les humains préfèrent parfois les conseils algorithmiques aux conseils humains</td>
+<td>Logg et al. (2019)</td>
+</tr>
+<tr>
+<td><strong>Biais d'automatisation</strong></td>
+<td>Sur-reliance heuristique sur les systèmes automatisés</td>
+<td>Skitka et al. (1999, 2000), Parasuraman &amp; Manzey (2010)</td>
+</tr>
+<tr>
+<td><strong>Confiance calibrée</strong></td>
+<td>Alignement entre confiance subjective et capacité réelle du système</td>
+<td>Lee &amp; See (2004), Zhang et al. (2020)</td>
+</tr>
+<tr>
+<td><strong>Paradoxe XAI</strong></td>
+<td>Les explications augmentent l'acceptation des recommandations correctes ET incorrectes</td>
+<td>Bansal et al. (2021)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="le-paradoxe-de-lexplicabilite-xai">Le Paradoxe de l'Explicabilité (XAI)</h3>
+<blockquote>
+<p>Fournir des explications ne crée PAS automatiquement une confiance calibrée. Les explications agissent souvent comme une <strong>rhétorique persuasive</strong> qui augmente l'acceptation injustifiée des recommandations incorrectes (Bansal et al., 2021).</p>
+</blockquote>
+<h3 id="solutions-identifiees">Solutions Identifiées</h3>
+<ul>
+<li><strong>Fonctions de Forçage Cognitif (CFF)</strong> : Obliger le décideur à faire une estimation indépendante AVANT de voir la recommandation de l'IA (Buçinca et al., 2021)</li>
+<li><strong>Contrôle de modification</strong> : Permettre aux utilisateurs d'ajuster légèrement la sortie (Dietvorst et al., 2018)</li>
+<li><strong>Responsabilité explicite</strong> : Exiger une justification du processus de décision (Skitka et al., 2000)</li>
+</ul>
+<hr>
+<h2 id="10-stream-7-gouvernance-et-audit-de-lia">10. Stream 7 — Gouvernance et Audit de l'IA</h2>
+<h3 id="requete-de-recherche_6">Requête de Recherche</h3>
+<pre><code>(&quot;AI governance&quot; OU &quot;AI audit&quot; OU &quot;algorithmic auditing&quot;) ET 
+(reliability OU robustness OU decision OU advice)
+</code></pre>
+<h3 id="resume-32-articles-20142026">Résumé : 32 articles | 2014–2026</h3>
+<h3 id="constat-principal_5">Constat Principal</h3>
+<p>L'audit de l'IA a évolué d'un simple test de boîte noire vers une <strong>gouvernance multi-couches</strong> : politiques organisationnelles + benchmarking pré-déploiement + évaluation d'impact post-déploiement.</p>
+<h3 id="articles-fondamentaux_6">Articles Fondamentaux</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Auteurs</th>
+<th>Année</th>
+<th>Titre</th>
+<th>Revue</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Raji et al.</td>
+<td>2020</td>
+<td>SMACTR: End-to-End Internal Algorithmic Auditing</td>
+<td><em>ACM FAccT</em></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Mökander et al.</td>
+<td>2023</td>
+<td>Auditing Large Language Models: Three-Layered Approach</td>
+<td><em>AI and Ethics</em></td>
+</tr>
+<tr>
+<td>3</td>
+<td>Mitchell et al.</td>
+<td>2019</td>
+<td>Model Cards for Model Reporting</td>
+<td><em>ACM FAccT</em></td>
+</tr>
+<tr>
+<td>4</td>
+<td>Liang et al.</td>
+<td>2022</td>
+<td>HELM: Holistic Evaluation of Language Models</td>
+<td><em>TMLR</em></td>
+</tr>
+<tr>
+<td>5</td>
+<td>Casper et al.</td>
+<td>2024</td>
+<td>Black-Box Access Is Insufficient for Rigorous AI Audits</td>
+<td><em>ACM FAccT</em></td>
+</tr>
+</tbody>
+</table>
+<h3 id="cadre-daudit-en-3-couches-mokander-et-al-2023">Cadre d'Audit en 3 Couches (Mökander et al., 2023)</h3>
+<table>
+<thead>
+<tr>
+<th>Couche</th>
+<th>Focus</th>
+<th>Objectif</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1. Audit de Gouvernance</strong></td>
+<td>Politiques organisationnelles</td>
+<td>Processus, responsabilités, conformité</td>
+</tr>
+<tr>
+<td><strong>2. Audit du Modèle</strong></td>
+<td>Capacités/risques pré-déploiement</td>
+<td>Performance, biais, robustesse, sécurité</td>
+</tr>
+<tr>
+<td><strong>3. Audit de l'Application</strong></td>
+<td>Impact réel post-déploiement</td>
+<td>Équité, fiabilité, effets sociaux</td>
+</tr>
+</tbody>
+</table>
+<h3 id="principes-cles">Principes Clés</h3>
+<ul>
+<li>Les <strong>principes éthiques seuls</strong> ne suffisent pas — il faut des mécanismes de vérification technique (Mittelstadt, 2019)</li>
+<li>L'audit <strong>boîte noire</strong> est insuffisant pour les LLMs complexes — l'accès aux poids/gradients est nécessaire (Casper et al., 2024)</li>
+<li>Les <strong>Model Cards</strong> et <strong>Datasheets</strong> fournissent une documentation standardisée essentielle (Mitchell et al., 2019; Gebru et al., 2021)</li>
+</ul>
+<hr>
+<h2 id="11-carte-conceptuelle-inter-streams">11. Carte Conceptuelle Inter-Streams</h2>
+<h3 id="relations-entre-les-streams">Relations Entre les Streams</h3>
+<pre><code>Stream 1 (Biais Humains Inventaire)
+    ↓ [Les LLMs reproduisent ces biais]
+Stream 2 (LLM Décisions Économiques)
+    ↓ [Les décisions sont fragiles]     ↓ [Les explications sont infidèles]
+Stream 3 (Sensibilité Prompts)      Stream 4 (Fidélité Raisonnement)
+    ↓                                    ↓
+Stream 5 (Multi-LLM : solution potentielle mais risque de groupthink)
+    ↓
+Stream 6 (Est-ce que les managers font confiance aux recommandations ?)
+    ↓
+Stream 7 (Comment gouverner et auditer ces systèmes ?)
+</code></pre>
+<h3 id="lecture-de-la-carte">Lecture de la Carte</h3>
+<ul>
+<li><strong>Streams 1 → 2 :</strong> Établit que les mêmes biais existent chez les humains ET les LLMs</li>
+<li><strong>Stream 2 → 3, 4, 5 :</strong> Investigue les <em>mécanismes</em> derrière la fragilité décisionnelle des LLMs</li>
+<li><strong>Streams 3, 4, 5, 6 → 7 :</strong> Alimente les exigences de gouvernance pour un déploiement fiable</li>
+</ul>
+<hr>
+<h2 id="12-analyse-des-lacunes-de-recherche">12. Analyse des Lacunes de Recherche</h2>
+<table>
+<thead>
+<tr>
+<th>Lacune Identifiée</th>
+<th>Streams</th>
+<th>Opportunité de Recherche</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Pas de comparaison systématique</strong> humain vs. LLM dans le newsvendor sous protocoles identiques</td>
+<td>S1 + S2</td>
+<td>Expériences contrôlées avec designs appariés</td>
+</tr>
+<tr>
+<td><strong>Sensibilité inconnue</strong> des décisions d'inventaire LLM au cadrage du problème</td>
+<td>S2 + S3</td>
+<td>Tester si la reformulation du prompt newsvendor modifie les quantités commandées</td>
+</tr>
+<tr>
+<td><strong>Fidélité du raisonnement</strong> des LLMs dans les contextes opérationnels non testée</td>
+<td>S2 + S4</td>
+<td>Évaluer si les explications CoT pour les décisions d'inventaire sont causalement fidèles</td>
+</tr>
+<tr>
+<td><strong>Délibération multi-LLM</strong> non appliquée aux opérations comportementales</td>
+<td>S2 + S5</td>
+<td>Tester si les comités de LLMs réduisent le biais pull-to-center</td>
+</tr>
+<tr>
+<td><strong>Confiance des managers</strong> dans les conseils LLM d'inventaire non étudiée</td>
+<td>S2 + S6</td>
+<td>Mesurer l'aversion/appréciation algorithmique pour les recommandations de commande</td>
+</tr>
+<tr>
+<td><strong>Pas de cadre de gouvernance</strong> spécifique aux décisions opérationnelles par LLM</td>
+<td>S2 + S7</td>
+<td>Développer des critères d'audit pour la fiabilité des décisions d'inventaire par LLM</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="13-synthese-et-prochaines-etapes">13. Synthèse et Prochaines Étapes</h2>
+<h3 id="131-ce-que-la-litterature-nous-apprend">13.1 Ce que la Littérature Nous Apprend</h3>
+<ol>
+<li><strong>Les biais humains dans le newsvendor sont robustes et bien documentés</strong> (52 articles, 25+ ans de réplications)</li>
+<li><strong>Les LLMs reproduisent la plupart de ces biais</strong> (pull-to-center, demand chasing, coûts irrécupérables) mais présentent aussi des biais spécifiques (hyper-équité, sycophantisme)</li>
+<li><strong>Les décisions des LLMs sont fragiles</strong> — sensibles à la formulation exacte du prompt</li>
+<li><strong>Les explications des LLMs ne sont pas toujours fidèles</strong> — risque de rationalisation post-hoc</li>
+<li><strong>Les architectures multi-LLM ont un potentiel</strong> mais aussi un <strong>risque de conformité/groupthink</strong></li>
+<li><strong>L'adoption par les managers dépend de la confiance calibrée</strong> — ni trop, ni trop peu</li>
+<li><strong>La gouvernance nécessite des mécanismes de vérification technique</strong>, pas seulement des principes</li>
+</ol>
+<h3 id="132-recapitulatif-des-livrables">13.2 Récapitulatif des Livrables</h3>
+<table>
+<thead>
+<tr>
+<th>Livrable</th>
+<th>Fichier</th>
+<th>Statut</th>
+<th>Articles</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Stream 1 : Opérations Comportementales</td>
+<td><code>stream1_behavioral_operations.md</code></td>
+<td>✅ Complet</td>
+<td>52</td>
+</tr>
+<tr>
+<td>Stream 2 : LLM Décisions</td>
+<td><code>stream2_llm_decision_making.md</code></td>
+<td>✅ Complet</td>
+<td>45</td>
+</tr>
+<tr>
+<td>Stream 3 : Sensibilité Prompts</td>
+<td>Compilé dans ce document</td>
+<td>✅ Complet</td>
+<td>35</td>
+</tr>
+<tr>
+<td>Stream 4 : Fidélité Raisonnement</td>
+<td>Compilé dans ce document</td>
+<td>✅ Complet</td>
+<td>30</td>
+</tr>
+<tr>
+<td>Stream 5 : Multi-LLM</td>
+<td>Compilé dans ce document</td>
+<td>✅ Complet</td>
+<td>32</td>
+</tr>
+<tr>
+<td>Stream 6 : Confiance Humaine-IA</td>
+<td>Compilé dans ce document</td>
+<td>✅ Complet</td>
+<td>35</td>
+</tr>
+<tr>
+<td>Stream 7 : Gouvernance IA</td>
+<td>Compilé dans ce document</td>
+<td>✅ Complet</td>
+<td>32</td>
+</tr>
+<tr>
+<td><strong>Présentation Globale</strong></td>
+<td><strong>Ce document</strong></td>
+<td><strong>✅ Complet</strong></td>
+<td><strong>261+</strong></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<blockquote>
+<p><strong>Document préparé pour la revue systématique de la littérature.</strong><br>
+<strong>Tous les DOIs vérifiés. Articles dédupliqués à travers toutes les bases de données.</strong></p>
+</blockquote>
+
+<div style="margin-top: 60px; padding-top: 20px; border-top: 2px solid #e8e8e8; text-align: center; color: #888; font-size: 9pt;">
+    <p>Document généré automatiquement — Revue Systématique de la Littérature</p>
+    <p>Août 2026 — 261+ articles identifiés à travers 11 bases de données et 7 flux de recherche</p>
+</div>
+</body>
+</html>

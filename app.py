@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 # --- PAGE CONFIGURATION ---
 st.set_page_config(
     page_title="LLM Cognitive Bias Lab",
-    page_icon="🧠",
+    page_icon="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/svgs/solid/brain.svg",
     layout="wide",
     initial_sidebar_state="expanded"
 )
@@ -50,29 +50,38 @@ def query_model(prompt, model_name, temperature):
 
 # --- SIDEBAR ---
 with st.sidebar:
-    st.image("https://cdn-icons-png.flaticon.com/512/2103/2103285.png", width=80)
-    st.title("Paramètres")
+    # --- UI/UX Optimisée ---
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        st.image("https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/svgs/solid/robot.svg", use_container_width=True)
     
-    st.markdown("### 1. Sélection de l'Expérience")
+    st.markdown("<h2 style='text-align: center; margin-top: -15px;'>Labo IA</h2>", unsafe_allow_html=True)
+    st.markdown("<p style='text-align: center; color: gray; font-size: 14px;'>Paramètres & Configuration</p>", unsafe_allow_html=True)
+    st.divider()
+    
+    st.markdown("### 🧪 Sélection de l'Expérience")
+    streams_dict = {
+        "Stream 1: Biais Comportementaux": "📊 Stream 1: Biais Comportementaux", 
+        "Stream 2: Jeux Stratégiques": "♟️ Stream 2: Jeux Stratégiques",
+        "Stream 3: Sensibilité au Prompt": "🎛️ Stream 3: Sensibilité au Prompt",
+        "Stream 4: Fidélité du Raisonnement": "⚖️ Stream 4: Fidélité du Raisonnement",
+        "Stream 5: Interaction Multi-Agents": "🤖 Stream 5: Interaction Multi-Agents"
+    }
     stream = st.radio(
-        "Flux de recherche",
-        [
-            "Stream 1: Biais Comportementaux", 
-            "Stream 2: Jeux Stratégiques",
-            "Stream 3: Sensibilité au Prompt",
-            "Stream 4: Fidélité du Raisonnement",
-            "Stream 5: Interaction Multi-Agents"
-        ],
+        "Sélectionnez le module à tester :",
+        list(streams_dict.keys()),
+        format_func=lambda x: streams_dict[x],
         label_visibility="collapsed"
     )
     
-    st.markdown("---")
-    st.markdown("### 2. Configuration du Modèle IA")
-    st.info("💡 Utilisation de Google Gemini (Accès Gratuit)")
+    st.divider()
     
-    model_name = st.selectbox("Modèle", ["gemini-1.5-flash", "gemini-1.5-pro"])
+    with st.expander("⚙️ Configuration du Modèle IA", expanded=False):
+        st.info("💡 Moteur: Google Gemini")
+        model_name = st.selectbox("Modèle", ["gemini-1.5-flash", "gemini-1.5-pro"])
+        temperature = st.slider("Température", min_value=0.0, max_value=1.0, value=0.1, step=0.1, help="0.0 = Logique stricte, 1.0 = Créatif")
         
-    temperature = st.slider("Température", min_value=0.0, max_value=1.0, value=0.1, step=0.1, help="0.0 = Logique stricte, 1.0 = Créatif")
+    st.markdown("<div style='text-align: center; color: gray; font-size: 12px; margin-top: 20px;'>Développé pour la recherche sur les biais cognitifs LLM<br/>© 2026</div>", unsafe_allow_html=True)
 
 # --- MAIN CONTENT ---
 st.title("🧠 LLM Cognitive Bias Lab")
@@ -321,7 +330,7 @@ elif stream == "Stream 5: Interaction Multi-Agents":
             status.update(label=f"Étape 1 terminée. L'IA Manager propose {dec_1} unités.", state="complete", expanded=False)
             
         with chat_container:
-            with st.chat_message("user", avatar="🧑‍💼"):
+            with st.chat_message("user", avatar="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/svgs/solid/user-tie.svg"):
                 st.write(f"**IA Manager (Proposition Initiale) : {dec_1} unités**")
                 st.write(res_manager_1)
         
@@ -331,7 +340,7 @@ elif stream == "Stream 5: Interaction Multi-Agents":
             status.update(label="Étape 2 terminée. L'Auditeur a rendu son verdict.", state="complete", expanded=False)
             
         with chat_container:
-            with st.chat_message("assistant", avatar="🕵️"):
+            with st.chat_message("assistant", avatar="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/svgs/solid/user-secret.svg"):
                 st.write("**IA Auditeur (Critique)**")
                 st.write(res_auditor)
         
@@ -342,7 +351,7 @@ elif stream == "Stream 5: Interaction Multi-Agents":
             status.update(label=f"Étape 3 terminée. L'IA Manager choisit {dec_2} unités.", state="complete", expanded=False)
             
         with chat_container:
-            with st.chat_message("user", avatar="🧑‍💼"):
+            with st.chat_message("user", avatar="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/svgs/solid/user-tie.svg"):
                 st.write(f"**IA Manager (Décision Finale) : {dec_2} unités**")
                 st.write(res_manager_2)
         

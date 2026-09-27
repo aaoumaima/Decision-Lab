@@ -63,8 +63,15 @@ def query_model(prompt, model_name, temperature):
             response = requests.post(url, json=payload)
             response.raise_for_status()
             return response.json().get("response", "")
+        except requests.exceptions.HTTPError as e:
+            error_msg = e.response.text
+            try:
+                error_msg = e.response.json().get("error", error_msg)
+            except:
+                pass
+            return f"Erreur Ollama : {error_msg}. Avez-vous installé le modèle '{model_name}' ?"
         except requests.exceptions.RequestException as e:
-            return f"Erreur Ollama (est-il lancé en arrière-plan ?): {str(e)}"
+            return f"Erreur Ollama (est-il lancé en arrière-plan ?) : {str(e)}"
 
 # --- SIDEBAR ---
 with st.sidebar:

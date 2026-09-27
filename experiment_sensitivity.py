@@ -68,6 +68,13 @@ def query_ollama(prompt, model_name="mistral", temperature=0.7):
         response = requests.post(url, json=payload, timeout=120)
         response.raise_for_status()
         return response.json().get("response", "")
+    except requests.exceptions.HTTPError as e:
+        error_msg = e.response.text
+        try:
+            error_msg = e.response.json().get("error", error_msg)
+        except:
+            pass
+        return f"Erreur Ollama : {error_msg}. (Modèle '{model_name}' manquant ?)"
     except Exception as e:
         return f"Erreur Ollama: {str(e)}"
 

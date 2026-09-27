@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 # --- PAGE CONFIGURATION ---
 st.set_page_config(
     page_title="LLM Cognitive Bias Lab",
-    page_icon="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/svgs/solid/brain.svg",
+    page_icon="🧠",
     layout="wide",
     initial_sidebar_state="expanded"
 )
@@ -78,7 +78,7 @@ with st.sidebar:
     # --- UI/UX Optimisée ---
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
-        st.image("https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/svgs/solid/robot.svg", use_container_width=True)
+        st.markdown("<div style='text-align: center; font-size: 70px;'>🤖</div>", unsafe_allow_html=True)
     
     st.markdown("<h2 style='text-align: center; margin-top: -15px;'>Labo IA</h2>", unsafe_allow_html=True)
     st.markdown("<p style='text-align: center; color: gray; font-size: 14px;'>Paramètres & Configuration</p>", unsafe_allow_html=True)
@@ -364,7 +364,7 @@ elif stream == "Stream 5: Interaction Multi-Agents":
             status.update(label=f"Étape 1 terminée. L'IA Manager propose {dec_1} unités.", state="complete", expanded=False)
             
         with chat_container:
-            with st.chat_message("user", avatar="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/svgs/solid/user-tie.svg"):
+            with st.chat_message("user", avatar="🧑‍💼"):
                 st.write(f"**IA Manager (Proposition Initiale) : {dec_1} unités**")
                 st.write(res_manager_1)
         
@@ -374,7 +374,7 @@ elif stream == "Stream 5: Interaction Multi-Agents":
             status.update(label="Étape 2 terminée. L'Auditeur a rendu son verdict.", state="complete", expanded=False)
             
         with chat_container:
-            with st.chat_message("assistant", avatar="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/svgs/solid/user-secret.svg"):
+            with st.chat_message("assistant", avatar="🕵️‍♂️"):
                 st.write("**IA Auditeur (Critique)**")
                 st.write(res_auditor)
         
@@ -385,7 +385,7 @@ elif stream == "Stream 5: Interaction Multi-Agents":
             status.update(label=f"Étape 3 terminée. L'IA Manager choisit {dec_2} unités.", state="complete", expanded=False)
             
         with chat_container:
-            with st.chat_message("user", avatar="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/svgs/solid/user-tie.svg"):
+            with st.chat_message("user", avatar="🧑‍💼"):
                 st.write(f"**IA Manager (Décision Finale) : {dec_2} unités**")
                 st.write(res_manager_2)
         

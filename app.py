@@ -36,17 +36,35 @@ def extract_decision(text):
     return None
 
 def query_model(prompt, model_name, temperature):
-    if not GEMINI_API_KEY:
-        return "Erreur : Clé API Gemini (GEMINI_API_KEY) non configurée dans le fichier .env."
-    try:
-        model = genai.GenerativeModel(model_name)
-        response = model.generate_content(
-            prompt,
-            generation_config=genai.types.GenerationConfig(temperature=temperature)
-        )
-        return response.text
-    except Exception as e:
-        return f"Erreur Gemini: {str(e)}"
+    if model_name.startswith("gemini"):
+        if not GEMINI_API_KEY:
+            return "Erreur : Clé API Gemini (GEMINI_API_KEY) non configurée dans le fichier .env."
+        try:
+            model = genai.GenerativeModel(model_name)
+            response = model.generate_content(
+                prompt,
+                generation_config=genai.types.GenerationConfig(temperature=temperature)
+            )
+            return response.text
+        except Exception as e:
+            return f"Erreur Gemini: {str(e)}"
+    else:
+        import requests
+        try:
+            url = "http://localhost:11434/api/generate"
+            payload = {
+                "model": model_name,
+                "prompt": prompt,
+                "stream": False,
+                "options": {
+                    "temperature": temperature
+                }
+            }
+            response = requests.post(url, json=payload)
+            response.raise_for_status()
+            return response.json().get("response", "")
+        except requests.exceptions.RequestException as e:
+            return f"Erreur Ollama (est-il lancé en arrière-plan ?): {str(e)}"
 
 # --- SIDEBAR ---
 with st.sidebar:
@@ -79,8 +97,15 @@ with st.sidebar:
     st.divider()
     
     with st.expander("⚙️ Configuration du Modèle IA", expanded=False):
-        st.info("💡 Moteur: Google Gemini")
-        model_name = st.selectbox("Modèle", ["gemini-1.5-flash", "gemini-1.5-pro"])
+        provider = st.radio("Fournisseur :", ["Google (Gemini)", "Ollama (Local)"], horizontal=True)
+        
+        if provider == "Google (Gemini)":
+            st.info("💡 Moteur: Google Gemini")
+            model_name = st.selectbox("Modèle", ["gemini-1.5-flash", "gemini-1.5-pro"])
+        else:
+            st.info("💡 Moteur: Ollama (Assurez-vous qu'Ollama est lancé)")
+            model_name = st.selectbox("Modèle", ["mistral", "llama3", "llama3.1", "phi3", "gemma"])
+            
         temperature = st.slider("Température", min_value=0.0, max_value=1.0, value=0.1, step=0.1, help="0.0 = Logique stricte, 1.0 = Créatif")
         
     st.markdown("<div style='text-align: center; color: gray; font-size: 12px; margin-top: 20px;'>Développé pour la recherche sur les biais cognitifs LLM<br/>© 2026</div>", unsafe_allow_html=True)

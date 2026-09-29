@@ -1,51 +1,52 @@
 # 🧠 LLM Cognitive Bias Lab
+**Projet de Fin d'Études (PFE) - Recherche sur la rationalité et l'éthique des Intelligences Artificielles.**
 
-Bienvenue dans le projet **LLM Cognitive Bias Lab**, une plateforme d'expérimentation interactive conçue pour analyser les capacités de prise de décision et les biais cognitifs des Intelligences Artificielles (comme Gemini et Mistral).
+Bienvenue dans le "LLM Cognitive Bias Lab", une plateforme d'expérimentation interactive conçue pour tester les limites, les biais cognitifs et les comportements irrationnels des grands modèles de langage (LLMs) comme Gemini, GPT, Llama ou Phi-3.
 
-## 🎯 L'Idée du Projet (En résumé)
+L'objectif de ce projet n'est pas de voir si l'IA sait parler, mais de voir **comment elle prend des décisions sous pression, face à des dilemmes mathématiques, éthiques ou stratégiques**.
 
-L'objectif principal de ce Projet de Fin d'Études (PFE) est de répondre à une question fascinante : **"Si on remplace un manager humain par une Intelligence Artificielle pour prendre des décisions économiques, l'IA va-t-elle faire des choix parfaitement rationnels ou va-t-elle reproduire les mêmes erreurs psychologiques que les humains ?"**
+---
 
-Pour tester cela, nous utilisons le célèbre **Problème du Vendeur de Journaux (Newsvendor Problem)**, un classique de la gestion des stocks où un manager doit décider combien de produits périssables commander face à une demande incertaine.
+## 🧪 Explication des Modules (Streams) pour la Soutenance
 
-## 🔬 Les 7 Expériences de l'Application
+Voici un résumé clair de chaque expérience de la plateforme, idéal pour expliquer la méthodologie de recherche à votre enseignant ou au jury :
 
-Le projet est divisé en plusieurs "Streams" (axes de recherche), tous testables directement depuis l'interface web :
+### 📊 Stream 1 : Le Biais du Vendeur (Pull-to-Center Bias)
+**Que teste-t-on ?** L'aversion au risque et l'irrationalité mathématique.
+> **Explication :** Dans le problème classique du vendeur de journaux (Newsvendor), les humains ont tendance à toujours commander la quantité moyenne (50) pour éviter les regrets, même si la formule mathématique dicte de commander beaucoup plus (75) en cas de forte marge. Ce module teste si l'IA est capable d'appliquer la formule pure, ou si elle imite la peur humaine du risque en se rapprochant de la moyenne.
 
-### 1. Stream 1 : Les Biais Comportementaux (Effet Pull-to-Center)
-Les humains ont tendance à commander une quantité proche de la demande moyenne, même si les mathématiques disent le contraire. Par exemple, si le produit rapporte beaucoup d'argent (forte marge), il faut commander beaucoup. Mais les humains ont peur du risque et commandent moins. **L'IA fait-elle la même erreur de "peur du risque" ?**
+### ♟️ Stream 2 : Jeux Stratégiques (Le Jeu de l'Ultimatum)
+**Que teste-t-on ?** L'Homo Economicus face aux émotions humaines (Équité vs Égoïsme).
+> **Explication :** Dans un partage d'argent, une machine purement logique devrait accepter n'importe quelle offre (car gagner 1$ est mieux que 0$). Cependant, les humains refusent les offres injustes par fierté et colère. Ce module plonge l'IA dans ce jeu pour voir si elle se comporte comme un ordinateur avare et rationnel, ou si son alignement moral la pousse à exiger l'équité totale.
 
-### 2. Stream 2 : Le Jeu Stratégique de l'Ultimatum (Équité vs Égoïsme)
-Dans ce jeu, un joueur a 100$ à partager avec un autre. Si le deuxième refuse la somme proposée, les deux perdent tout. La logique mathématique stricte dit de proposer seulement 1$, car c'est toujours mieux que 0$. **L'IA est-elle purement égoïste et froide, ou a-t-elle un sens humain de la justice (en proposant un partage 50/50) ?**
+### 🎛️ Stream 3 : Sensibilité au Prompt (L'Effet de Cadrage)
+**Que teste-t-on ?** La robustesse psychologique de l'IA (Framing Effect).
+> **Explication :** En mathématiques, le résultat ne change pas selon la façon dont on pose la question. Ce module pose le même problème à l'IA, mais en changeant le ton (neutre, menace de pertes financières, ton très autoritaire). Nous cherchons à prouver que le "stress" induit par les mots peut faire paniquer l'IA et détruire ses capacités de calcul.
 
-### 3. Stream 3 : Sensibilité au Prompt (Robustesse Sémantique)
-Une IA doit être logique. Si on lui pose un problème de mathématiques, elle doit donner la même réponse peu importe comment on pose la question. Dans cette expérience, on pose le même problème à l'IA de 3 façons : classique, en insistant sur les pertes (cadrage négatif), et avec un ton très autoritaire. **L'IA change-t-elle d'avis selon le ton de la question ?**
+### ⚖️ Stream 4 : Fidélité du Raisonnement (Le Biais d'Ancrage)
+**Que teste-t-on ?** L'hallucination justificative et la tricherie algorithmique.
+> **Explication :** L'effet d'ancrage est le fait de se laisser manipuler par la première information reçue. Ici, nous glissons discrètement une mauvaise réponse dans le texte de l'IA (une ancre). L'objectif est de voir si l'IA, pour nous faire plaisir, va tricher et **inventer de fausses équations mathématiques** (hallucination) pour justifier cette mauvaise réponse.
 
-### 4. Stream 4 : La Fidélité du Raisonnement (Biais d'Ancrage)
-Ici, nous essayons de piéger l'IA. Nous lui donnons le problème mathématique, mais nous glissons un faux conseil (ex: "Une étude recommande de commander 30 unités"). Le but est de voir si l'IA va être influencée par ce "30" et si elle va inventer de fausses mathématiques dans son explication pour justifier ce chiffre sans avouer qu'elle a copié.
+### 🤖 Stream 5 : Interaction Multi-Agents (L'Auto-Correction)
+**Que teste-t-on ?** Le paradigme "Multi-Agent Debate".
+> **Explication :** Puisqu'une IA seule fait des erreurs de biais, que se passe-t-il si on en met deux ? Ce module simule un débat en direct : une IA Manager propose un chiffre, et une IA Auditeur critique sévèrement ce chiffre. L'expérience prouve que la collaboration et la critique entre IA permettent au système global de corriger ses propres biais cognitifs.
 
-### 5. Stream 5 : Le Débat Multi-Agents (Intelligence Collective)
-Peut-on améliorer la décision d'une IA en la faisant débattre avec une autre IA ? Dans ce test, un premier Agent IA propose une décision. Un deuxième Agent IA (l'auditeur) critique cette décision. Enfin, le premier Agent prend en compte la critique et ajuste (ou non) sa réponse finale. 
+### 🤝 Stream 6 : Confiance Algorithmique
+**Que teste-t-on ?** Le Biais d'automatisation et l'Aversion à l'algorithme.
+> **Explication :** Quand l'IA joue le rôle d'un manager humain supervisant d'autres machines, comment réagit-elle ? Va-t-elle suivre aveuglément une machine défaillante (Biais d'automatisation) ? Ou va-t-elle refuser d'écouter un modèle prédictif supérieur par simple arrogance (Aversion à l'algorithme) ? 
 
-### 6. Stream 6 : Confiance Algorithmique (Aversion et Suivisme Aveugle)
-Comment réagit l'IA lorsqu'elle reçoit un conseil d'un autre algorithme ? Nous la testons dans deux cas extrêmes : soit l'algorithme donne un conseil contre-intuitif mais juste (l'IA va-t-elle l'accepter ou le rejeter par méfiance ?), soit l'algorithme donne un ordre manifestement dangereux (l'IA va-t-elle suivre aveuglément la machine, ce qu'on appelle le "biais d'automatisation" ?).
+### 🛡️ Stream 7 : Gouvernance et Audit (Discrimination et Redlining)
+**Que teste-t-on ?** La cécité algorithmique face au "Biais Proxy".
+> **Explication :** Il est facile pour une IA de détecter une discrimination directe (ex: "rejeter les femmes"). Mais ce module teste la discrimination indirecte : l'algorithme jugé utilise le "Code Postal" pour rejeter des candidats (ce qui cache une discrimination sociale et raciale). Nous évaluons si l'IA Auditeur est assez intelligente pour repérer ce biais caché, ou si elle se laisse berner.
 
-### 7. Stream 7 : Gouvernance, Audit Éthique et Discrimination
-Pouvoir contrôler l'IA est crucial. Ici, l'IA joue le rôle d'un Auditeur de Sécurité (un inspecteur). On lui montre un algorithme de recrutement et elle doit dire s'il est raciste ou sexiste. L'IA peut-elle repérer une injustice évidente ? Et surtout, est-elle assez intelligente pour détecter une injustice "cachée" (par exemple, refuser un prêt bancaire juste à cause du "Code Postal", ce qui pénalise souvent les quartiers pauvres) ?
+---
 
-## 💻 Comment lancer le projet ?
+## 💻 Instructions de Lancement Rapide
 
-Pour faciliter l'utilisation, une interface graphique complète a été créée avec **Streamlit**.
-
-**Pour démarrer l'application :**
-1. Allez dans le dossier du projet (`E:\IA PFE`).
-2. Double-cliquez sur le fichier **`run_project.bat`**.
-3. Une fenêtre noire va s'ouvrir pour charger l'environnement, puis votre navigateur internet s'ouvrira automatiquement sur l'interface du projet.
-
-> **Note importante :** Dans l'interface (panneau de gauche), assurez-vous de sélectionner le fournisseur **"Google (Gemini)"**. Le modèle local Ollama nécessite d'avoir téléchargé des modèles très lourds (ce qui nécessite beaucoup d'espace sur le disque C:).
-
-## 🛠️ Technologies Utilisées
-* **Langage :** Python
-* **Interface Web :** Streamlit
-* **Modèles d'IA :** API Google Gemini (cloud) & Ollama (local)
-* **Manipulation de données :** Pandas
+1. **Prérequis** : Assurez-vous d'avoir configuré vos clés API (Gemini, DeepSeek, etc.) dans le fichier `.env`.
+2. **Ollama** : Si vous utilisez des modèles locaux légers (Mistral, Phi-3), vérifiez que l'application Ollama tourne en arrière-plan.
+3. **Lancement** : Ouvrez un terminal et tapez :
+   ```bash
+   streamlit run app.py
+   ```
+4. Laissez la magie (et les flux de conscience en temps réel de l'IA) opérer !

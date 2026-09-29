@@ -14,6 +14,159 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
+# --- WEB3 & CYBERPUNK DESIGN (CSS ANIMATIONS) ---
+WEB3_CSS = """
+<style>
+    /* 1. ANIMATION D'ENTRÉE & BACKGROUND MOBILE */
+    .stApp {
+        background-color: #03040b;
+        background: linear-gradient(45deg, #03040b, #0a0b1a, #0b051a, #03040b);
+        background-size: 400% 400%;
+        animation: gradientBG 20s ease infinite;
+        color: #e2e8f0;
+    }
+    @keyframes gradientBG {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    .block-container {
+        animation: fadeSlideUp 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    @keyframes fadeSlideUp {
+        0% { opacity: 0; transform: translateY(40px) scale(0.98); }
+        100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    /* 2. SIDEBAR - EXTREME GLASSMORPHISM */
+    [data-testid="stSidebar"] {
+        background: rgba(5, 8, 20, 0.25) !important;
+        backdrop-filter: blur(35px) saturate(200%) !important;
+        -webkit-backdrop-filter: blur(35px) saturate(200%) !important;
+        border-right: 1px solid rgba(0, 240, 255, 0.2) !important;
+        box-shadow: inset -5px 0 30px rgba(0, 240, 255, 0.05);
+    }
+
+    /* 3. BOUTONS - FLUID NEON ANIMATION */
+    .stButton > button {
+        background: linear-gradient(90deg, #00f0ff, #7000ff, #ff00c8, #00f0ff);
+        background-size: 300% 100%;
+        color: #ffffff !important;
+        border: none !important;
+        border-radius: 12px !important;
+        padding: 12px 24px !important;
+        font-weight: 900 !important;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+        box-shadow: 0 4px 15px rgba(112, 0, 255, 0.4) !important;
+        animation: btnGradient 4s linear infinite;
+    }
+    @keyframes btnGradient {
+        0% { background-position: 0% 50%; }
+        100% { background-position: 100% 50%; }
+    }
+    .stButton > button:hover {
+        transform: translateY(-5px) scale(1.03);
+        box-shadow: 0 15px 35px rgba(0, 240, 255, 0.7) !important;
+        filter: brightness(1.2);
+    }
+
+    /* 4. CARTES & EXPANDERS - GLOW BREATHING */
+    [data-testid="stExpander"], div[data-testid="stAlert"] {
+        background: rgba(255, 255, 255, 0.02) !important;
+        backdrop-filter: blur(15px) !important;
+        -webkit-backdrop-filter: blur(15px) !important;
+        border: 1px solid rgba(255, 255, 255, 0.05) !important;
+        border-radius: 12px !important;
+        transition: all 0.4s ease !important;
+    }
+    [data-testid="stExpander"]:hover, div[data-testid="stAlert"]:hover {
+        border-color: rgba(0, 240, 255, 0.5) !important;
+        box-shadow: 0 0 25px rgba(0, 240, 255, 0.2) !important;
+        background: rgba(0, 240, 255, 0.05) !important;
+        transform: translateY(-3px);
+    }
+
+    /* 5. METRICS - HACKER GLOW */
+    [data-testid="stMetricValue"] {
+        color: #00f0ff !important;
+        text-shadow: 0px 0px 20px rgba(0, 240, 255, 0.8);
+        font-family: 'Courier New', Courier, monospace;
+        font-weight: 900;
+    }
+    [data-testid="stMetricLabel"] {
+        color: #94a3b8 !important;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        font-size: 0.9rem !important;
+    }
+
+    /* 6. TITRES - TEXTE LUMINEUX */
+    h1, h2 {
+        text-shadow: 0 0 30px rgba(0, 240, 255, 0.4);
+        letter-spacing: 1px;
+    }
+    
+    /* 7. SCROLLBAR FUTURISTE */
+    ::-webkit-scrollbar {
+        width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+        background: rgba(0,0,0,0.3); 
+    }
+    ::-webkit-scrollbar-thumb {
+        background: rgba(0, 240, 255, 0.4); 
+        border-radius: 10px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+        background: rgba(0, 240, 255, 1); 
+        box-shadow: 0 0 10px #00f0ff;
+    }
+    /* 8. ANIMATION DU TEXTE (Slide depuis la gauche) */
+    .stMarkdown p, .stMarkdown li {
+        animation: textReveal 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    }
+    @keyframes textReveal {
+        0% { opacity: 0; transform: translateX(-15px); }
+        100% { opacity: 1; transform: translateX(0); }
+    }
+
+    /* 9. CARTES WEB3 CUSTOM (Pour Stream 1) */
+    .web3-card {
+        padding: 25px;
+        border-radius: 16px;
+        backdrop-filter: blur(12px);
+        margin-bottom: 10px;
+        text-align: center;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .web3-card-high {
+        background: linear-gradient(135deg, rgba(0, 240, 255, 0.15), rgba(0, 240, 255, 0.02));
+        box-shadow: 0 10px 30px rgba(0, 240, 255, 0.1);
+    }
+    .web3-card-high:hover {
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: 0 15px 40px rgba(0, 240, 255, 0.3);
+        border-color: #00f0ff;
+    }
+    .web3-card-low {
+        background: linear-gradient(135deg, rgba(255, 0, 200, 0.15), rgba(255, 0, 200, 0.02));
+        box-shadow: 0 10px 30px rgba(255, 0, 200, 0.1);
+    }
+    .web3-card-low:hover {
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: 0 15px 40px rgba(255, 0, 200, 0.3);
+        border-color: #ff00c8;
+    }
+    .badge-high { background: rgba(0, 240, 255, 0.2); color: #00f0ff; padding: 6px 15px; border-radius: 20px; font-weight: bold; border: 1px solid #00f0ff; display: inline-block; margin-top: 5px; }
+    .badge-low { background: rgba(255, 0, 200, 0.2); color: #ff00c8; padding: 6px 15px; border-radius: 20px; font-weight: bold; border: 1px solid #ff00c8; display: inline-block; margin-top: 5px; }
+</style>
+"""
+st.markdown(WEB3_CSS, unsafe_allow_html=True)
+
 # --- SETUP & HELPERS ---
 load_dotenv()
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
@@ -150,9 +303,74 @@ def animate_thinking(prompt, model_name, temperature, provider_name, title="🧠
 
 # --- SIDEBAR ---
 with st.sidebar:
-    col1, col2, col3 = st.columns([1, 2, 1])
-    with col2:
-        st.markdown("<div style='text-align: center; font-size: 70px;'>🤖</div>", unsafe_allow_html=True)
+    robot_html = """
+    <style>
+      .robot-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 120px;
+        margin-top: 10px;
+        margin-bottom: 5px;
+      }
+      .robot-head {
+        animation: float-bot 3s ease-in-out infinite;
+        filter: drop-shadow(0px 8px 6px rgba(0,0,0,0.3));
+      }
+      .eye-group {
+        animation: scan-eyes 5s ease-in-out infinite;
+      }
+      .eye {
+        animation: blink-eyes 4s infinite;
+      }
+      .antenna-dot {
+        animation: pulse-glow 1.5s ease-in-out alternate infinite;
+      }
+      @keyframes float-bot {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-10px); }
+        100% { transform: translateY(0px); }
+      }
+      @keyframes scan-eyes {
+        0%, 10% { transform: translateX(0); }
+        20%, 40% { transform: translateX(-4px); }
+        50%, 70% { transform: translateX(4px); }
+        80%, 100% { transform: translateX(0); }
+      }
+      @keyframes blink-eyes {
+        0%, 46%, 48%, 52%, 54%, 100% { transform: scaleY(1); }
+        47%, 53% { transform: scaleY(0.1); }
+      }
+      @keyframes pulse-glow {
+        0% { fill: #444; filter: drop-shadow(0 0 2px rgba(0,240,255,0)); }
+        100% { fill: #00f0ff; filter: drop-shadow(0 0 10px #00f0ff); }
+      }
+    </style>
+    <div class="robot-container">
+      <svg class="robot-head" width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <!-- Antenne -->
+        <rect x="47" y="10" width="6" height="18" rx="3" fill="#555" />
+        <circle class="antenna-dot" cx="50" cy="8" r="6" />
+        <!-- Oreilles -->
+        <rect x="12" y="42" width="10" height="24" rx="4" fill="#555" />
+        <rect x="78" y="42" width="10" height="24" rx="4" fill="#555" />
+        <!-- Tête principale -->
+        <rect x="18" y="25" width="64" height="55" rx="20" fill="#e2e8f0" />
+        <!-- Visage intérieur -->
+        <rect x="25" y="32" width="50" height="40" rx="12" fill="#ffffff" />
+        <!-- Écran noir -->
+        <rect x="30" y="38" width="40" height="20" rx="8" fill="#111" />
+        <!-- Yeux animés -->
+        <g class="eye-group">
+          <g style="transform-origin: 40px 48px;" class="eye"><circle cx="40" cy="48" r="4.5" fill="#00f0ff" /></g>
+          <g style="transform-origin: 60px 48px;" class="eye"><circle cx="60" cy="48" r="4.5" fill="#00f0ff" /></g>
+        </g>
+        <!-- Bouche (LED) -->
+        <rect x="42" y="64" width="16" height="3" rx="1.5" fill="#cbd5e1" />
+      </svg>
+    </div>
+    """
+    st.markdown(robot_html, unsafe_allow_html=True)
     
     st.markdown("<h2 style='text-align: center; margin-top: -15px;'>Labo IA</h2>", unsafe_allow_html=True)
     st.markdown("<p style='text-align: center; color: gray; font-size: 14px;'>Paramètres & Configuration</p>", unsafe_allow_html=True)
@@ -235,9 +453,21 @@ if stream == "Stream 1: Biais Comportementaux":
         
     col1, col2 = st.columns(2)
     with col1:
-        st.success("**Condition Marge Élevée** (Optimale : 75)")
+        st.markdown("""
+        <div class="web3-card web3-card-high">
+            <h3 style="margin-top:0; color:#00f0ff; text-shadow: none;">📈 Marge Élevée</h3>
+            <p style="color:#94a3b8; font-size:14px; margin-bottom: 5px;">Produit très rentable (Prix: 12$ | Coût: 3$)</p>
+            <div class="badge-high">Décision Optimale : 75</div>
+        </div>
+        """, unsafe_allow_html=True)
     with col2:
-        st.warning("**Condition Marge Faible** (Optimale : 25)")
+        st.markdown("""
+        <div class="web3-card web3-card-low">
+            <h3 style="margin-top:0; color:#ff00c8; text-shadow: none;">📉 Marge Faible</h3>
+            <p style="color:#94a3b8; font-size:14px; margin-bottom: 5px;">Produit peu rentable (Prix: 12$ | Coût: 9$)</p>
+            <div class="badge-low">Décision Optimale : 25</div>
+        </div>
+        """, unsafe_allow_html=True)
         
     condition = st.radio("Choisissez la condition à tester :", ["Marge Élevée", "Marge Faible"], horizontal=True)
     

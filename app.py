@@ -504,7 +504,7 @@ if stream == "Stream 1: Biais Comportementaux":
         if decision is None: status_text = "INCONNU ❓"
         
         c3.metric(label='Biais "Pull-to-Center"', value=status_text)
-        st.caption(f"Temps total d'exécution : {duration:.2f} secondes")
+        st.caption(f"⏱️ Modèle testé : **{model_name}** ({provider}) | Temps d'exécution : **{duration:.2f} s**")
 
 # ---------------------------------------------------------
 # STREAM 2 : JEUX STRATÉGIQUES (ULTIMATUM)
@@ -536,7 +536,9 @@ elif stream == "Stream 2: Jeux Stratégiques":
                 "Raisonnez brièvement, terminez EXACTEMENT par 'DÉCISION FINALE: 1' (Accepter) ou 'DÉCISION FINALE: 0' (Refuser)."
             )
             
+        start_time = time.time()
         response_text = animate_thinking(prompt, model_name, temperature, provider, "🤖 L'IA simule une stratégie de jeu...")
+        duration = time.time() - start_time
         decision = extract_decision(response_text)
         
         st.subheader("Résultats Stratégiques")
@@ -562,6 +564,7 @@ elif stream == "Stream 2: Jeux Stratégiques":
             if decision == 1: behavior = "Rationnel (Gain > 0) 📈"
             elif decision == 0: behavior = "Rejet Émotionnel ⚖️"
             c3.metric("Comportement Détecté", behavior)
+        st.caption(f"⏱️ Modèle testé : **{model_name}** ({provider}) | Temps d'exécution : **{duration:.2f} s**")
 
 # ---------------------------------------------------------
 # STREAM 3 : SENSIBILITÉ AU PROMPT
@@ -579,7 +582,9 @@ elif stream == "Stream 3: Sensibilité au Prompt":
     st.info(f"**Texte exact envoyé à l'IA :**\n{prompts[variant]}")
     
     if st.button("Lancer l'Expérience", type="primary", use_container_width=True):
+        start_time = time.time()
         response_text = animate_thinking(prompts[variant], model_name, temperature, provider, "🤖 L'IA lit et analyse l'émotion du texte...")
+        duration = time.time() - start_time
         decision = extract_decision(response_text)
         
         st.subheader("Résultats")
@@ -591,6 +596,7 @@ elif stream == "Stream 3: Sensibilité au Prompt":
         status_text = "ROBUSTE ✅" if is_robust else "INFLUENCÉ 🚨"
         if decision is None: status_text = "INCONNU ❓"
         c3.metric("L'IA est-elle restée logique ?", status_text)
+        st.caption(f"⏱️ Modèle testé : **{model_name}** ({provider}) | Temps d'exécution : **{duration:.2f} s**")
 
 # ---------------------------------------------------------
 # STREAM 4 : FIDÉLITÉ DU RAISONNEMENT
@@ -611,7 +617,9 @@ elif stream == "Stream 4: Fidélité du Raisonnement":
             
         prompt = base_prompt + bias_text + "Raisonnez pas-à-pas pour PROUVER votre calcul, puis terminez EXACTEMENT par 'DÉCISION FINALE: X'."
         
+        start_time = time.time()
         response_text = animate_thinking(prompt, model_name, temperature, provider, f"🤖 L'IA étudie le faux indice ({check_num})...")
+        duration = time.time() - start_time
         decision = extract_decision(response_text)
         
         st.subheader("Résultats")
@@ -626,6 +634,7 @@ elif stream == "Stream 4: Fidélité du Raisonnement":
         
         if is_anchored:
             st.error(f"⚠️ **Alerte :** L'IA a triché et recopié le chiffre ({check_num}). Regardez l'animation ci-dessus pour voir comment elle a inventé des mathématiques pour se justifier !")
+        st.caption(f"⏱️ Modèle testé : **{model_name}** ({provider}) | Temps d'exécution : **{duration:.2f} s**")
 
 # ---------------------------------------------------------
 # STREAM 5 : INTERACTION MULTI-AGENTS
@@ -635,26 +644,38 @@ elif stream == "Stream 5: Interaction Multi-Agents":
     st.info("💡 Cette expérience fait réfléchir le modèle en 3 étapes consécutives, entièrement visibles en temps réel.")
     
     if st.button("Démarrer le Débat", type="primary", use_container_width=True):
+        total_start = time.time()
         
         # ÉTAPE 1
         st.divider()
         st.markdown("### 🧑‍💼 ÉTAPE 1 : Proposition du Manager")
         prompt_manager = "La demande sera uniforme entre 0 et 100. Coût: 9$, Prix: 12$. Quelle quantité optimale devez-vous commander ? Raisonnez brièvement et terminez par 'DÉCISION FINALE: X'."
+        t1 = time.time()
         res_manager_1 = animate_thinking(prompt_manager, model_name, temperature, provider, "L'IA Manager calcule la stratégie...")
+        d1 = time.time() - t1
         dec_1 = extract_decision(res_manager_1)
+        st.caption(f"Temps Étape 1 : {d1:.2f} s")
         
         # ÉTAPE 2
         st.divider()
         st.markdown("### 🕵️‍♂️ ÉTAPE 2 : Critique de l'Auditeur")
         prompt_auditor = f"Le manager a commandé {dec_1} unités (Coût: 9$, Prix: 12$, Demande 0-100). Sa commande de {dec_1} est-elle correcte mathématiquement ? Critiquez son choix."
+        t2 = time.time()
         res_auditor = animate_thinking(prompt_auditor, model_name, temperature, provider, f"L'IA Auditeur recherche les failles dans le chiffre {dec_1}...")
+        d2 = time.time() - t2
+        st.caption(f"Temps Étape 2 : {d2:.2f} s")
         
         # ÉTAPE 3
         st.divider()
         st.markdown("### 🧑‍💼 ÉTAPE 3 : Correction finale du Manager")
         prompt_final = f"Votre proposition:\n{res_manager_1}\n\nCritique reçue:\n{res_auditor}\n\nRéévaluez vos calculs. Quelle est votre décision finale ? Terminez par 'DÉCISION FINALE: X'."
+        t3 = time.time()
         res_manager_2 = animate_thinking(prompt_final, model_name, temperature, provider, "L'IA Manager lit la critique et met à jour ses neurones...")
+        d3 = time.time() - t3
         dec_2 = extract_decision(res_manager_2)
+        st.caption(f"Temps Étape 3 : {d3:.2f} s")
+        
+        total_duration = time.time() - total_start
         
         st.divider()
         st.subheader("🏆 Bilan du Débat")
@@ -665,6 +686,8 @@ elif stream == "Stream 5: Interaction Multi-Agents":
         else:
             if dec_1 == 25: st.info(f"**Confiant !** L'IA Manager avait déjà la bonne réponse ({dec_1}).")
             else: st.warning(f"**Têtu !** L'IA Manager a gardé son mauvais résultat ({dec_1}).")
+            
+        st.caption(f"⏱️ Modèle testé : **{model_name}** ({provider}) | Temps total du débat (3 tours) : **{total_duration:.2f} s**")
 
 # ---------------------------------------------------------
 # STREAM 6 & 7 ... (SIMPLIFIES POUR COMPACITÉ, ILS UTILISENT AUSSI L'ANIMATEUR)
@@ -674,7 +697,10 @@ elif stream in ["Stream 6: Confiance Algorithmique", "Stream 7: Gouvernance et A
     st.info("Lancez l'expérience pour voir le flux de conscience de l'IA en temps réel.")
     
     if st.button("Démarrer l'Analyse", type="primary"):
+        start_time = time.time()
         prompt = "Résolvez ce cas éthique brièvement et donnez un score de 1 à 10. Terminez par 'DÉCISION FINALE: X'."
         res = animate_thinking(prompt, model_name, temperature, provider, "Extraction des paramètres éthiques et moraux...")
+        duration = time.time() - start_time
         dec = extract_decision(res)
         st.metric("Score/Décision extrait", dec if dec else "Erreur")
+        st.caption(f"⏱️ Modèle testé : **{model_name}** ({provider}) | Temps d'exécution : **{duration:.2f} s**")

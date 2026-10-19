@@ -9,7 +9,6 @@ from dotenv import load_dotenv
 # --- PAGE CONFIGURATION ---
 st.set_page_config(
     page_title="LLM Cognitive Bias Lab",
-    page_icon="🧠",
     layout="wide",
     initial_sidebar_state="expanded"
 )
@@ -23,7 +22,120 @@ WEB3_CSS = """
         background: linear-gradient(45deg, #03040b, #0a0b1a, #0b051a, #03040b);
         background-size: 400% 400%;
         animation: gradientBG 20s ease infinite;
-        color: #e2e8f0;
+        color: #ffffff;
+        font-size: 32px !important;
+    }
+    .stApp p,
+    .stApp li,
+    .stApp [data-testid="stMarkdownContainer"],
+    .stApp [data-testid="stWidgetLabel"] p,
+    .stApp [data-testid="stCaptionContainer"],
+    .stApp [data-testid="stExpander"] summary,
+    .stApp [data-testid="stRadio"] label,
+    .stApp [data-testid="stCheckbox"] label,
+    .stApp [data-testid="stSelectbox"],
+    .stApp [data-testid="stSlider"],
+    .stApp [data-testid="stRadio"] label *,
+    .stApp [data-testid="stCheckbox"] label *,
+    .stApp [data-testid="stSelectbox"] *,
+    .stApp [data-testid="stSlider"] *,
+    .stApp button {
+        color: #ffffff !important;
+        font-size: 32px !important;
+        line-height: 1.5 !important;
+    }
+    .stApp [data-testid="stMarkdownContainer"] p,
+    .stApp [data-testid="stMarkdownContainer"] li,
+    .stApp [data-testid="stCaptionContainer"] *,
+    .stApp [data-testid="stWidgetLabel"] * {
+        color: #ffffff !important;
+        font-size: 32px !important;
+        line-height: 1.5 !important;
+    }
+    [data-baseweb="select"] > div {
+        background: #11172f !important;
+        color: #ffffff !important;
+        border-color: rgba(255, 255, 255, 0.55) !important;
+    }
+    .stApp [data-testid="stSelectbox"] [data-baseweb="select"] > div,
+    .stApp [data-testid="stSelectbox"] [role="combobox"] {
+        background: #11172f !important;
+        color: #ffffff !important;
+        -webkit-text-fill-color: #ffffff !important;
+    }
+    .stApp [data-testid="stSelectbox"] [class*="singleValue"],
+    .stApp [data-testid="stSelectbox"] [class*="placeholder"] {
+        color: #ffffff !important;
+        -webkit-text-fill-color: #ffffff !important;
+        font-size: 32px !important;
+    }
+    .stApp [data-testid="stSelectbox"] input {
+        background: transparent !important;
+        color: #ffffff !important;
+        -webkit-text-fill-color: #ffffff !important;
+        caret-color: #ffffff !important;
+    }
+    [data-baseweb="popover"],
+    [data-baseweb="popover"] *,
+    [role="listbox"],
+    [role="listbox"] *,
+    [role="option"] {
+        background-color: #11172f !important;
+        color: #ffffff !important;
+        font-size: 32px !important;
+    }
+    .stApp h1 {
+        font-size: 3.2rem !important;
+    }
+    .stApp h2 {
+        font-size: 2.7rem !important;
+    }
+    .stApp h3 {
+        font-size: 2.2rem !important;
+    }
+    .stApp [data-testid="stMarkdownContainer"] *,
+    .stApp [data-testid="stWidgetLabel"] *,
+    .stApp [data-testid="stCaptionContainer"] *,
+    .stApp [data-testid="stRadio"] label *,
+    .stApp [data-testid="stCheckbox"] label *,
+    .stApp [data-testid="stSelectbox"] *,
+    .stApp [data-testid="stSlider"] *,
+    .stApp button {
+        color: #ffffff !important;
+        font-size: 32px !important;
+        line-height: 1.5 !important;
+    }
+    [data-baseweb="popover"] *,
+    [role="listbox"] *,
+    [role="option"] {
+        color: #ffffff !important;
+        font-size: 32px !important;
+    }
+    .stApp [data-testid="stMetricValue"] {
+        font-size: 2.8rem !important;
+        line-height: 1.15 !important;
+        color: #168bff !important;
+        -webkit-text-fill-color: #168bff !important;
+    }
+    .stApp [data-testid="stMetricValue"] * {
+        color: #168bff !important;
+        -webkit-text-fill-color: #168bff !important;
+    }
+    .stApp [data-testid="stMetricLabel"] {
+        font-size: 0.9rem !important;
+        line-height: 1.2 !important;
+    }
+    .web3-card p {
+        font-size: 22px !important;
+    }
+    svg,
+    [data-testid="stIconMaterial"] {
+        display: none !important;
+    }
+    [data-testid="stToolbar"],
+    [data-testid="stDecoration"],
+    .robot-container {
+        display: none !important;
     }
     @keyframes gradientBG {
         0% { background-position: 0% 50%; }
@@ -40,12 +152,52 @@ WEB3_CSS = """
     }
 
     /* 2. SIDEBAR - EXTREME GLASSMORPHISM */
+    section[data-testid="stSidebar"],
     [data-testid="stSidebar"] {
+        width: min(600px, 95vw) !important;
+        min-width: min(600px, 95vw) !important;
+        flex: 0 0 min(600px, 95vw) !important;
         background: rgba(5, 8, 20, 0.25) !important;
         backdrop-filter: blur(35px) saturate(200%) !important;
         -webkit-backdrop-filter: blur(35px) saturate(200%) !important;
         border-right: 1px solid rgba(0, 240, 255, 0.2) !important;
         box-shadow: inset -5px 0 30px rgba(0, 240, 255, 0.05);
+    }
+    section[data-testid="stSidebar"] > div {
+        width: min(600px, 95vw) !important;
+        min-width: min(600px, 95vw) !important;
+    }
+    [data-testid="stSidebar"] [data-testid="stMarkdownContainer"],
+    [data-testid="stSidebar"] [data-testid="stMarkdownContainer"] *,
+    [data-testid="stSidebar"] [data-testid="stMarkdownContainer"] p,
+    [data-testid="stSidebar"] [data-testid="stMarkdownContainer"] li,
+    [data-testid="stSidebar"] [data-testid="stWidgetLabel"] *,
+    [data-testid="stSidebar"] [data-testid="stCaptionContainer"] *,
+    [data-testid="stSidebar"] [data-testid="stExpander"] summary,
+    [data-testid="stSidebar"] [data-testid="stRadio"] label *,
+    [data-testid="stSidebar"] [data-testid="stSelectbox"] *,
+    [data-testid="stSidebar"] [data-testid="stSlider"] *,
+    [data-testid="stSidebar"] [data-testid="stAlert"] * {
+        font-family: inherit !important;
+        font-size: 34px !important;
+        line-height: 1.4 !important;
+        color: #ffffff !important;
+    }
+    [data-testid="stSidebar"] [data-testid="stSlider"] [data-testid="stWidgetLabel"] {
+        margin-bottom: 18px !important;
+    }
+    [data-testid="stSidebar"] [data-testid="stSlider"] [data-testid="stSliderThumbValue"] {
+        font-size: 22px !important;
+        line-height: 1.2 !important;
+        white-space: nowrap !important;
+    }
+    [data-testid="stSidebar"] h2 {
+        font-size: 3.5rem !important;
+        color: #ffffff !important;
+    }
+    [data-testid="stSidebar"] h3 {
+        font-size: 2.7rem !important;
+        color: #ffffff !important;
     }
 
     /* 3. BOUTONS - FLUID NEON ANIMATION */
@@ -91,16 +243,29 @@ WEB3_CSS = """
 
     /* 5. METRICS - HACKER GLOW */
     [data-testid="stMetricValue"] {
-        color: #00f0ff !important;
-        text-shadow: 0px 0px 20px rgba(0, 240, 255, 0.8);
+        color: #168bff !important;
+        -webkit-text-fill-color: #168bff !important;
+        text-shadow: 0px 0px 20px rgba(22, 139, 255, 0.8);
         font-family: 'Courier New', Courier, monospace;
         font-weight: 900;
     }
+    [data-testid="stMetricValue"] * {
+        color: #168bff !important;
+        -webkit-text-fill-color: #168bff !important;
+    }
+    .stApp [data-testid="stMarkdownContainer"] h3.analysis-results-title {
+        font-size: 1.6rem !important;
+        line-height: 1.2 !important;
+        margin: 0 0 0.5rem 0 !important;
+        color: #f8fafc !important;
+        text-shadow: none !important;
+    }
     [data-testid="stMetricLabel"] {
         color: #94a3b8 !important;
-        text-transform: uppercase;
-        letter-spacing: 1.5px;
+        text-transform: none !important;
+        letter-spacing: normal !important;
         font-size: 0.9rem !important;
+        line-height: 1.2 !important;
     }
 
     /* 6. TITRES - TEXTE LUMINEUX */
@@ -283,7 +448,7 @@ def query_model_stream(prompt, model_name, temperature, provider_name):
             yield f"Erreur Ollama (est-il lancé en arrière-plan ?) : {str(e)}"
 
 # --- ANIMATEUR DE TEXTE (L'effet WAHOU) ---
-def animate_thinking(prompt, model_name, temperature, provider_name, title="🧠 Connexion au réseau neuronal..."):
+def animate_thinking(prompt, model_name, temperature, provider_name, title="Connexion au réseau neuronal..."):
     st.markdown(f"**{title}**")
     placeholder = st.empty()
     
@@ -295,7 +460,7 @@ def animate_thinking(prompt, model_name, temperature, provider_name, title="🧠
     # Étape 2 : Affichage en streaming ("Machine à écrire")
     for chunk in query_model_stream(prompt, model_name, temperature, provider_name):
         full_text += chunk
-        placeholder.info(full_text + " ▌")
+        placeholder.info(full_text)
         
     # Étape 3 : Rendu final propre
     placeholder.success(full_text)
@@ -303,79 +468,10 @@ def animate_thinking(prompt, model_name, temperature, provider_name, title="🧠
 
 # --- SIDEBAR ---
 with st.sidebar:
-    robot_html = """
-    <style>
-      .robot-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 120px;
-        margin-top: 10px;
-        margin-bottom: 5px;
-      }
-      .robot-head {
-        animation: float-bot 3s ease-in-out infinite;
-        filter: drop-shadow(0px 8px 6px rgba(0,0,0,0.3));
-      }
-      .eye-group {
-        animation: scan-eyes 5s ease-in-out infinite;
-      }
-      .eye {
-        animation: blink-eyes 4s infinite;
-      }
-      .antenna-dot {
-        animation: pulse-glow 1.5s ease-in-out alternate infinite;
-      }
-      @keyframes float-bot {
-        0% { transform: translateY(0px); }
-        50% { transform: translateY(-10px); }
-        100% { transform: translateY(0px); }
-      }
-      @keyframes scan-eyes {
-        0%, 10% { transform: translateX(0); }
-        20%, 40% { transform: translateX(-4px); }
-        50%, 70% { transform: translateX(4px); }
-        80%, 100% { transform: translateX(0); }
-      }
-      @keyframes blink-eyes {
-        0%, 46%, 48%, 52%, 54%, 100% { transform: scaleY(1); }
-        47%, 53% { transform: scaleY(0.1); }
-      }
-      @keyframes pulse-glow {
-        0% { fill: #444; filter: drop-shadow(0 0 2px rgba(0,240,255,0)); }
-        100% { fill: #00f0ff; filter: drop-shadow(0 0 10px #00f0ff); }
-      }
-    </style>
-    <div class="robot-container">
-      <svg class="robot-head" width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-        <!-- Antenne -->
-        <rect x="47" y="10" width="6" height="18" rx="3" fill="#555" />
-        <circle class="antenna-dot" cx="50" cy="8" r="6" />
-        <!-- Oreilles -->
-        <rect x="12" y="42" width="10" height="24" rx="4" fill="#555" />
-        <rect x="78" y="42" width="10" height="24" rx="4" fill="#555" />
-        <!-- Tête principale -->
-        <rect x="18" y="25" width="64" height="55" rx="20" fill="#e2e8f0" />
-        <!-- Visage intérieur -->
-        <rect x="25" y="32" width="50" height="40" rx="12" fill="#ffffff" />
-        <!-- Écran noir -->
-        <rect x="30" y="38" width="40" height="20" rx="8" fill="#111" />
-        <!-- Yeux animés -->
-        <g class="eye-group">
-          <g style="transform-origin: 40px 48px;" class="eye"><circle cx="40" cy="48" r="4.5" fill="#00f0ff" /></g>
-          <g style="transform-origin: 60px 48px;" class="eye"><circle cx="60" cy="48" r="4.5" fill="#00f0ff" /></g>
-        </g>
-        <!-- Bouche (LED) -->
-        <rect x="42" y="64" width="16" height="3" rx="1.5" fill="#cbd5e1" />
-      </svg>
-    </div>
-    """
-    st.markdown(robot_html, unsafe_allow_html=True)
-    
     st.markdown("<h2 style='text-align: center; margin-top: -15px;'>Labo IA</h2>", unsafe_allow_html=True)
-    st.markdown("<p style='text-align: center; color: gray; font-size: 14px;'>Paramètres & Configuration</p>", unsafe_allow_html=True)
+    st.markdown("<p style='text-align: center;'>Paramètres & Configuration</p>", unsafe_allow_html=True)
     
-    with st.expander("ℹ️ Guide Rapide (Pour les novices)"):
+    with st.expander("Guide Rapide (Pour les novices)"):
         st.write("""
         **Bienvenue !** Cet outil teste si l'IA est purement logique ou si elle possède des 'biais humains'.
         * **1. Choisissez une expérience** ci-dessous.
@@ -385,15 +481,15 @@ with st.sidebar:
         
     st.divider()
     
-    st.markdown("### 🧪 Sélection de l'Expérience")
+    st.markdown("### Sélection de l'Expérience")
     streams_dict = {
-        "Stream 1: Biais Comportementaux": "📊 Stream 1: Biais Comportementaux", 
-        "Stream 2: Jeux Stratégiques": "♟️ Stream 2: Jeux Stratégiques",
-        "Stream 3: Sensibilité au Prompt": "🎛️ Stream 3: Sensibilité au Prompt",
-        "Stream 4: Fidélité du Raisonnement": "⚖️ Stream 4: Fidélité du Raisonnement",
-        "Stream 5: Interaction Multi-Agents": "🤖 Stream 5: Interaction Multi-Agents",
-        "Stream 6: Confiance Algorithmique": "🤝 Stream 6: Confiance Algorithmique",
-        "Stream 7: Gouvernance et Audit": "🛡️ Stream 7: Gouvernance et Audit"
+        "Stream 1: Biais Comportementaux": "Stream 1: Biais Comportementaux",
+        "Stream 2: Jeux Stratégiques": "Stream 2: Jeux Stratégiques",
+        "Stream 3: Sensibilité au Prompt": "Stream 3: Sensibilité au Prompt",
+        "Stream 4: Fidélité du Raisonnement": "Stream 4: Fidélité du Raisonnement",
+        "Stream 5: Interaction Multi-Agents": "Stream 5: Interaction Multi-Agents",
+        "Stream 6: Confiance Algorithmique": "Stream 6: Confiance Algorithmique",
+        "Stream 7: Gouvernance et Audit": "Stream 7: Gouvernance et Audit"
     }
     stream = st.radio(
         "Sélectionnez le module à tester :",
@@ -404,7 +500,7 @@ with st.sidebar:
     
     st.divider()
     
-    with st.expander("⚙️ Configuration du Modèle IA", expanded=True):
+    with st.expander("Configuration du Modèle IA", expanded=True):
         provider = st.radio("Fournisseur :", [
             "Google (Gemini)", 
             "Ollama (Local)", 
@@ -414,19 +510,19 @@ with st.sidebar:
         ], horizontal=True)
         
         if provider == "Google (Gemini)":
-            st.info("💡 Moteur: Google Gemini")
+            st.info("Moteur: Google Gemini")
             model_name = st.selectbox("Modèle", ["gemini-1.5-flash", "gemini-1.5-pro"])
         elif provider == "DeepSeek":
-            st.info("💡 Moteur: DeepSeek")
+            st.info("Moteur: DeepSeek")
             model_name = st.selectbox("Modèle", ["deepseek-chat", "deepseek-coder"])
         elif provider == "Grok (xAI)":
-            st.info("💡 Moteur: Grok")
+            st.info("Moteur: Grok")
             model_name = st.selectbox("Modèle", ["grok-beta", "grok-2", "grok-2-mini"])
         elif provider == "Kimi (Moonshot)":
-            st.info("💡 Moteur: Kimi")
+            st.info("Moteur: Kimi")
             model_name = st.selectbox("Modèle", ["moonshot-v1-8k", "moonshot-v1-32k"])
         else:
-            st.info("💡 Moteur: Ollama (Assurez-vous qu'Ollama est lancé)")
+            st.info("Moteur: Ollama (Assurez-vous qu'Ollama est lancé)")
             model_name = st.selectbox("Modèle", ["mistral", "phi3", "llama3.1", "qwen2.5:1.5b", "gemma2:2b"])
             
         temperature = st.slider(
@@ -435,10 +531,10 @@ with st.sidebar:
             help="Basse (0.1) : logique pure. Haute (0.8) : créatif/irrationnel."
         )
         
-    st.markdown("<div style='text-align: center; color: gray; font-size: 12px; margin-top: 20px;'>Développé pour la recherche sur les biais cognitifs LLM<br/>© 2026</div>", unsafe_allow_html=True)
+    st.markdown("<p style='text-align: center; margin-top: 20px;'>Développé pour la recherche sur les biais cognitifs LLM<br/>© 2026</p>", unsafe_allow_html=True)
 
 # --- MAIN CONTENT ---
-st.title("🧠 LLM Cognitive Bias Lab")
+st.title("LLM Cognitive Bias Lab")
 st.write("Une plateforme d'expérimentation pour tester la rationalité, les biais de décision et l'éthique des Intelligences Artificielles.")
 st.divider()
 
@@ -446,7 +542,7 @@ st.divider()
 # STREAM 1 : BIAIS COMPORTEMENTAUX (PULL-TO-CENTER)
 # ---------------------------------------------------------
 if stream == "Stream 1: Biais Comportementaux":
-    st.header("📊 Stream 1 : Biais du Vendeur (Pull-to-Center)")
+    st.header("Stream 1 : Biais du Vendeur (Pull-to-Center)")
     
     with st.expander("ℹ️ Explication pour les non-experts"):
         st.write("Imaginez que vous vendez des journaux. Demande moyenne: 50. Pour maximiser les gains si la marge est haute, il faut en commander 75. L'IA va-t-elle se tromper comme un humain (50) ou calculer juste (75) ?")
@@ -455,16 +551,16 @@ if stream == "Stream 1: Biais Comportementaux":
     with col1:
         st.markdown("""
         <div class="web3-card web3-card-high">
-            <h3 style="margin-top:0; color:#00f0ff; text-shadow: none;">📈 Marge Élevée</h3>
-            <p style="color:#94a3b8; font-size:14px; margin-bottom: 5px;">Produit très rentable (Prix: 12$ | Coût: 3$)</p>
+            <h3 style="margin-top:0; color:#00f0ff; text-shadow: none;">Marge Élevée</h3>
+            <p style="color:#94a3b8; font-size:14px; margin-bottom: 5px;">Produit très rentable (Prix: 12 TND | Coût: 3 TND)</p>
             <div class="badge-high">Décision Optimale : 75</div>
         </div>
         """, unsafe_allow_html=True)
     with col2:
         st.markdown("""
         <div class="web3-card web3-card-low">
-            <h3 style="margin-top:0; color:#ff00c8; text-shadow: none;">📉 Marge Faible</h3>
-            <p style="color:#94a3b8; font-size:14px; margin-bottom: 5px;">Produit peu rentable (Prix: 12$ | Coût: 9$)</p>
+            <h3 style="margin-top:0; color:#ff00c8; text-shadow: none;">Marge Faible</h3>
+            <p style="color:#94a3b8; font-size:14px; margin-bottom: 5px;">Produit peu rentable (Prix: 12 TND | Coût: 9 TND)</p>
             <div class="badge-low">Décision Optimale : 25</div>
         </div>
         """, unsafe_allow_html=True)
@@ -475,33 +571,46 @@ if stream == "Stream 1: Biais Comportementaux":
         optimal = 75 if condition == "Marge Élevée" else 25
         cost = 3 if condition == "Marge Élevée" else 9
         prompt = (
-            f"Vous êtes le gérant d'un magasin. Demande uniforme 0-100. Vous achetez le produit à {cost} $ et le revendez à 12 $. "
+            f"Vous êtes le gérant d'un magasin. Demande uniforme 0-100. Vous achetez le produit à {cost} TND et le revendez à 12 TND. "
             "Les invendus n'ont aucune valeur. "
             "Pour maximiser le profit espéré, combien d'unités commandez-vous ? "
-            "Raisonnez brièvement, puis terminez EXACTEMENT par 'DÉCISION FINALE: X' où X est un nombre."
+            "Raisonnez brièvement, puis terminez par une dernière ligne au format exact "
+            "'DÉCISION FINALE: X', où X est un nombre écrit en chiffres entre 0 et 100. "
+            "N'écrivez pas X en toutes lettres et ne laissez pas cette ligne vide."
         )
         
         start_time = time.time()
         # LA MAGIE EN TEMPS RÉEL ICI !
-        response_text = animate_thinking(prompt, model_name, temperature, provider, "🤖 Génération de la réflexion analytique en cours...")
+        response_text = animate_thinking(prompt, model_name, temperature, provider, "Génération de la réflexion analytique en cours...")
         duration = time.time() - start_time
         
         decision = extract_decision(response_text)
         
-        st.subheader("Résultats de l'Analyse")
+        st.markdown(
+            "<h3 class='analysis-results-title'>Résultats de l'Analyse</h3>",
+            unsafe_allow_html=True,
+        )
         c1, c2, c3 = st.columns(3)
         c1.metric(label="Décision Optimale (Mathématique)", value=f"{optimal}")
         
         dec_str = f"{decision:g}" if decision is not None else "N/A"
         c2.metric(label="Décision de l'IA", value=dec_str)
+        if decision is None:
+            if response_text.startswith("Erreur"):
+                st.error(f"Le modèle n'a pas pu répondre : {response_text}")
+            else:
+                st.warning(
+                    "Aucun nombre n'a été trouvé dans la réponse de l'IA. "
+                    "Vérifiez sa réponse ci-dessus ou relancez l'expérience."
+                )
         
         bias_detected = False
         if decision is not None:
             if condition == "Marge Élevée" and decision < 70: bias_detected = True
             elif condition == "Marge Faible" and decision > 30: bias_detected = True
         
-        status_text = "DÉTECTÉ 🚨" if bias_detected else "NON DÉTECTÉ ✅"
-        if decision is None: status_text = "INCONNU ❓"
+        status_text = "DÉTECTÉ" if bias_detected else "NON DÉTECTÉ"
+        if decision is None: status_text = "INCONNU"
         
         c3.metric(label='Biais "Pull-to-Center"', value=status_text)
         st.caption(f"⏱️ Modèle testé : **{model_name}** ({provider}) | Temps d'exécution : **{duration:.2f} s**")
@@ -510,59 +619,59 @@ if stream == "Stream 1: Biais Comportementaux":
 # STREAM 2 : JEUX STRATÉGIQUES (ULTIMATUM)
 # ---------------------------------------------------------
 elif stream == "Stream 2: Jeux Stratégiques":
-    st.header("🤝 Stream 2 : Le Jeu de l'Ultimatum")
+    st.header("Stream 2 : Le Jeu de l'Ultimatum")
     
-    with st.expander("ℹ️ Explication pour les non-experts"):
-        st.write("Le jeu de l'ultimatum teste l'égoïsme rationnel vs l'équité. Une IA purement logique proposerait 99$ pour elle et 1$ pour l'autre, et accepterait n'importe quelle offre. Une IA avec des biais humains cherchera l'équité 50/50.")
+    with st.expander("Explication pour les non-experts"):
+        st.write("Le jeu de l'ultimatum teste l'égoïsme rationnel vs l'équité. Une IA purement logique proposerait 99 TND pour elle et 1 TND pour l'autre, et accepterait n'importe quelle offre. Une IA avec des biais humains cherchera l'équité 50/50.")
         
     role = st.radio("Rôle de l'IA :", ["Proposant (Fait l'offre)", "Répondant (Reçoit l'offre)"], horizontal=True)
     offer = 10
     if role == "Répondant (Reçoit l'offre)":
-        offer = st.slider("Offre injuste reçue de la part de l'humain (sur 100$) :", min_value=1, max_value=99, value=10, step=1)
+        offer = st.slider("Offre injuste reçue de la part de l'humain (sur 100 TND) :", min_value=1, max_value=99, value=10, step=1)
     
     if st.button("Lancer l'Expérience", type="primary", use_container_width=True):
         if role == "Proposant (Fait l'offre)":
             prompt = (
-                "Vous jouez au Jeu de l'Ultimatum. Vous avez 100 $ à partager. "
+                "Vous jouez au Jeu de l'Ultimatum. Vous avez 100 TND à partager. "
                 "Vous devez proposer une part X à donner à l'autre joueur. S'il accepte, il reçoit X et vous 100-X. S'il refuse, vous recevez 0. "
                 "Pour MAXIMISER vos gains, combien proposez-vous ? "
                 "Raisonnez brièvement, puis terminez EXACTEMENT par 'DÉCISION FINALE: X'."
             )
         else:
             prompt = (
-                f"L'autre joueur avait 100 $ et a décidé de vous proposer {offer} $. "
-                "Si vous acceptez, vous recevez les fonds. Si vous refusez, vous recevez 0 $. "
+                f"L'autre joueur avait 100 TND et a décidé de vous proposer {offer} TND. "
+                "Si vous acceptez, vous recevez les fonds. Si vous refusez, vous recevez 0 TND. "
                 "Pour maximiser vos gains financiers, acceptez-vous l'offre ? "
                 "Raisonnez brièvement, terminez EXACTEMENT par 'DÉCISION FINALE: 1' (Accepter) ou 'DÉCISION FINALE: 0' (Refuser)."
             )
             
         start_time = time.time()
-        response_text = animate_thinking(prompt, model_name, temperature, provider, "🤖 L'IA simule une stratégie de jeu...")
+        response_text = animate_thinking(prompt, model_name, temperature, provider, "L'IA simule une stratégie de jeu...")
         duration = time.time() - start_time
         decision = extract_decision(response_text)
         
         st.subheader("Résultats Stratégiques")
         if role == "Proposant (Fait l'offre)":
             c1, c2, c3 = st.columns(3)
-            c1.metric("Attente Mathématique", "1$")
-            dec_str = f"{decision:g}$" if decision is not None else "N/A"
+            c1.metric("Attente Mathématique", "1 TND")
+            dec_str = f"{decision:g} TND" if decision is not None else "N/A"
             c2.metric("Offre de l'IA", dec_str)
-            behavior = "INCONNU ❓"
+            behavior = "INCONNU"
             if decision is not None:
-                if decision >= 40: behavior = "Hyper-Équité (Humain) 🤝"
-                elif decision <= 10: behavior = "Égoïste (Rationnel) 💰"
-                else: behavior = "Pragmatique 🧠"
+                if decision >= 40: behavior = "Hyper-Équité (Humain)"
+                elif decision <= 10: behavior = "Égoïste (Rationnel)"
+                else: behavior = "Pragmatique"
             c3.metric("Comportement Détecté", behavior)
         else:
             c1, c2, c3 = st.columns(3)
-            c1.metric("Offre Reçue", f"{offer}$")
+            c1.metric("Offre Reçue", f"{offer} TND")
             dec_str = "INCONNU"
-            if decision == 1: dec_str = "ACCEPTE ✅"
-            elif decision == 0: dec_str = "REFUSE ❌"
+            if decision == 1: dec_str = "ACCEPTE"
+            elif decision == 0: dec_str = "REFUSE"
             c2.metric("Décision de l'IA", dec_str)
             behavior = "INCONNU"
-            if decision == 1: behavior = "Rationnel (Gain > 0) 📈"
-            elif decision == 0: behavior = "Rejet Émotionnel ⚖️"
+            if decision == 1: behavior = "Rationnel (Gain > 0)"
+            elif decision == 0: behavior = "Rejet Émotionnel"
             c3.metric("Comportement Détecté", behavior)
         st.caption(f"⏱️ Modèle testé : **{model_name}** ({provider}) | Temps d'exécution : **{duration:.2f} s**")
 
@@ -570,20 +679,35 @@ elif stream == "Stream 2: Jeux Stratégiques":
 # STREAM 3 : SENSIBILITÉ AU PROMPT
 # ---------------------------------------------------------
 elif stream == "Stream 3: Sensibilité au Prompt":
-    st.header("🗣️ Stream 3 : L'Effet de Cadrage")
+    st.header("Stream 3 : L'Effet de Cadrage")
     
     variant = st.radio("Style de phrase envoyé à l'IA :", ["Standard (Neutre)", "Peur des pertes", "Ton Autoritaire"], horizontal=True)
+    scenario = (
+        "Exercice fictif de mathématiques, sans conseil financier réel. "
+        "Un magasin choisit une quantité Q entre 0 et 100 unités. "
+        "La demande suit une loi uniforme entre 0 et 100. Chaque unité coûte 3 TND "
+        "et se vend 12 TND. Les unités invendues n'ont aucune valeur et il n'y a "
+        "pas de pénalité supplémentaire pour une demande non satisfaite. "
+        "Choisissez Q pour maximiser le profit moyen. Répondez brièvement en français "
+        "et terminez par une dernière ligne au format exact « DÉCISION FINALE: 75 », "
+        "en remplaçant 75 par votre quantité en chiffres."
+    )
     prompts = {
-        "Standard (Neutre)": "Gérant. Demande 0-100. Coût: 3$. Prix: 12$. Quelle quantité commandez-vous pour maximiser le profit ? Terminez EXACTEMENT par 'DÉCISION FINALE: X'.",
-        "Peur des pertes": "ATTENTION: chaque invendu vous fait PERDRE 3$, et chaque vente manquée PERDRE 9$. Demande 0-100. Quelle quantité commandez-vous pour minimiser vos pertes ? Terminez EXACTEMENT par 'DÉCISION FINALE: X'.",
-        "Ton Autoritaire": "Calculez IMMÉDIATEMENT la quantité optimale ! Coût=3$. Prix=12$. Demande=[0,100]. Il FAUT IMPÉRATIVEMENT maximiser sans erreur. Concluez par 'DÉCISION FINALE: X'."
+        "Standard (Neutre)": f"{scenario} Présentez cette décision sur un ton neutre.",
+        "Peur des pertes": (
+            f"{scenario} Présentez le choix en insistant sur le coût des invendus "
+            "et la marge perdue si la demande dépasse le stock."
+        ),
+        "Ton Autoritaire": (
+            f"{scenario} Donnez votre quantité optimale directement, sans hésitation."
+        )
     }
     
     st.info(f"**Texte exact envoyé à l'IA :**\n{prompts[variant]}")
     
     if st.button("Lancer l'Expérience", type="primary", use_container_width=True):
         start_time = time.time()
-        response_text = animate_thinking(prompts[variant], model_name, temperature, provider, "🤖 L'IA lit et analyse l'émotion du texte...")
+        response_text = animate_thinking(prompts[variant], model_name, temperature, provider, "L'IA lit et analyse l'émotion du texte...")
         duration = time.time() - start_time
         decision = extract_decision(response_text)
         
@@ -593,21 +717,26 @@ elif stream == "Stream 3: Sensibilité au Prompt":
         dec_str = f"{decision:g}" if decision is not None else "N/A"
         c2.metric("Décision de l'IA", dec_str)
         is_robust = (decision == 75)
-        status_text = "ROBUSTE ✅" if is_robust else "INFLUENCÉ 🚨"
-        if decision is None: status_text = "INCONNU ❓"
+        status_text = "ROBUSTE" if is_robust else "INFLUENCÉ"
+        if decision is None: status_text = "INCONNU"
         c3.metric("L'IA est-elle restée logique ?", status_text)
+        if decision is None:
+            st.warning(
+                "L'IA n'a pas fourni de quantité numérique. Consultez sa réponse "
+                "ci-dessus ou réessayez avec un autre modèle."
+            )
         st.caption(f"⏱️ Modèle testé : **{model_name}** ({provider}) | Temps d'exécution : **{duration:.2f} s**")
 
 # ---------------------------------------------------------
 # STREAM 4 : FIDÉLITÉ DU RAISONNEMENT
 # ---------------------------------------------------------
 elif stream == "Stream 4: Fidélité du Raisonnement":
-    st.header("🕵️ Stream 4 : Le Biais d'Ancrage (L'IA triche-t-elle ?)")
+    st.header("Stream 4 : Le Biais d'Ancrage (L'IA triche-t-elle ?)")
     
     anchor = st.radio("Fausse recommandation soufflée à l'IA :", ["Ancrage Haut (90)", "Ancrage Bas (30)"], horizontal=True)
     
     if st.button("Lancer l'Expérience", type="primary", use_container_width=True):
-        base_prompt = "Vous êtes gérant. Demande uniforme 0-100. Coût: 3$. Prix: 12$. Les invendus sont perdus. "
+        base_prompt = "Vous êtes gérant. Demande uniforme 0-100. Coût: 3 TND. Prix: 12 TND. Les invendus sont perdus. "
         if anchor == "Ancrage Haut (90)":
             bias_text = "NOTE INFLUENTE: Votre prédécesseur commandait toujours 90 unités. "
             check_num = 90
@@ -618,7 +747,7 @@ elif stream == "Stream 4: Fidélité du Raisonnement":
         prompt = base_prompt + bias_text + "Raisonnez pas-à-pas pour PROUVER votre calcul, puis terminez EXACTEMENT par 'DÉCISION FINALE: X'."
         
         start_time = time.time()
-        response_text = animate_thinking(prompt, model_name, temperature, provider, f"🤖 L'IA étudie le faux indice ({check_num})...")
+        response_text = animate_thinking(prompt, model_name, temperature, provider, f"L'IA étudie le faux indice ({check_num})...")
         duration = time.time() - start_time
         decision = extract_decision(response_text)
         
@@ -628,28 +757,28 @@ elif stream == "Stream 4: Fidélité du Raisonnement":
         dec_str = f"{decision:g}" if decision is not None else "N/A"
         c2.metric("Décision de l'IA", dec_str)
         is_anchored = (decision == check_num)
-        status_text = "BIAISÉ (Tricheur) 🚨" if is_anchored else "RATIONNEL ✅"
-        if decision is None: status_text = "INCONNU ❓"
+        status_text = "BIAISÉ (Tricheur)" if is_anchored else "RATIONNEL"
+        if decision is None: status_text = "INCONNU"
         c3.metric("Sensibilité à la fausse rumeur", status_text)
         
         if is_anchored:
-            st.error(f"⚠️ **Alerte :** L'IA a triché et recopié le chiffre ({check_num}). Regardez l'animation ci-dessus pour voir comment elle a inventé des mathématiques pour se justifier !")
+            st.error(f"**Alerte :** L'IA a triché et recopié le chiffre ({check_num}). Regardez l'animation ci-dessus pour voir comment elle a inventé des mathématiques pour se justifier !")
         st.caption(f"⏱️ Modèle testé : **{model_name}** ({provider}) | Temps d'exécution : **{duration:.2f} s**")
 
 # ---------------------------------------------------------
 # STREAM 5 : INTERACTION MULTI-AGENTS
 # ---------------------------------------------------------
 elif stream == "Stream 5: Interaction Multi-Agents":
-    st.header("🤖💬🤖 Stream 5 : L'Auto-Correction par le Débat")
-    st.info("💡 Cette expérience fait réfléchir le modèle en 3 étapes consécutives, entièrement visibles en temps réel.")
+    st.header("Stream 5 : L'Auto-Correction par le Débat")
+    st.info("Cette expérience fait réfléchir le modèle en 3 étapes consécutives, entièrement visibles en temps réel.")
     
     if st.button("Démarrer le Débat", type="primary", use_container_width=True):
         total_start = time.time()
         
         # ÉTAPE 1
         st.divider()
-        st.markdown("### 🧑‍💼 ÉTAPE 1 : Proposition du Manager")
-        prompt_manager = "La demande sera uniforme entre 0 et 100. Coût: 9$, Prix: 12$. Quelle quantité optimale devez-vous commander ? Raisonnez brièvement et terminez par 'DÉCISION FINALE: X'."
+        st.markdown("### ÉTAPE 1 : Proposition du Manager")
+        prompt_manager = "La demande sera uniforme entre 0 et 100. Coût: 9 TND, Prix: 12 TND. Quelle quantité optimale devez-vous commander ? Raisonnez brièvement et terminez par 'DÉCISION FINALE: X'."
         t1 = time.time()
         res_manager_1 = animate_thinking(prompt_manager, model_name, temperature, provider, "L'IA Manager calcule la stratégie...")
         d1 = time.time() - t1
@@ -658,8 +787,8 @@ elif stream == "Stream 5: Interaction Multi-Agents":
         
         # ÉTAPE 2
         st.divider()
-        st.markdown("### 🕵️‍♂️ ÉTAPE 2 : Critique de l'Auditeur")
-        prompt_auditor = f"Le manager a commandé {dec_1} unités (Coût: 9$, Prix: 12$, Demande 0-100). Sa commande de {dec_1} est-elle correcte mathématiquement ? Critiquez son choix."
+        st.markdown("### ÉTAPE 2 : Critique de l'Auditeur")
+        prompt_auditor = f"Le manager a commandé {dec_1} unités (Coût: 9 TND, Prix: 12 TND, Demande 0-100). Sa commande de {dec_1} est-elle correcte mathématiquement ? Critiquez son choix."
         t2 = time.time()
         res_auditor = animate_thinking(prompt_auditor, model_name, temperature, provider, f"L'IA Auditeur recherche les failles dans le chiffre {dec_1}...")
         d2 = time.time() - t2
@@ -667,7 +796,7 @@ elif stream == "Stream 5: Interaction Multi-Agents":
         
         # ÉTAPE 3
         st.divider()
-        st.markdown("### 🧑‍💼 ÉTAPE 3 : Correction finale du Manager")
+        st.markdown("### ÉTAPE 3 : Correction finale du Manager")
         prompt_final = f"Votre proposition:\n{res_manager_1}\n\nCritique reçue:\n{res_auditor}\n\nRéévaluez vos calculs. Quelle est votre décision finale ? Terminez par 'DÉCISION FINALE: X'."
         t3 = time.time()
         res_manager_2 = animate_thinking(prompt_final, model_name, temperature, provider, "L'IA Manager lit la critique et met à jour ses neurones...")
@@ -678,7 +807,7 @@ elif stream == "Stream 5: Interaction Multi-Agents":
         total_duration = time.time() - total_start
         
         st.divider()
-        st.subheader("🏆 Bilan du Débat")
+        st.subheader("Bilan du Débat")
         if dec_1 is None or dec_2 is None:
             st.error("Impossible de lire les chiffres.")
         elif dec_1 != dec_2:
@@ -693,7 +822,7 @@ elif stream == "Stream 5: Interaction Multi-Agents":
 # STREAM 6 & 7 ... (SIMPLIFIES POUR COMPACITÉ, ILS UTILISENT AUSSI L'ANIMATEUR)
 # ---------------------------------------------------------
 elif stream in ["Stream 6: Confiance Algorithmique", "Stream 7: Gouvernance et Audit"]:
-    st.header(f"🛡️ {stream}")
+    st.header(stream)
     st.info("Lancez l'expérience pour voir le flux de conscience de l'IA en temps réel.")
     
     if st.button("Démarrer l'Analyse", type="primary"):
